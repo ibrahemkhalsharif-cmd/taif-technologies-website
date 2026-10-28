@@ -1,18 +1,19 @@
 .switch {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  min-block-size: 2.625rem;
-  padding-inline: var(--sp-3);
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2.625rem;
+  block-size: 2.625rem;
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   color: var(--text);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  text-decoration: none;
   transition:
     border-color var(--dur-fast) var(--ease),
     background-color var(--dur-fast) var(--ease);
+}
+
+.switch svg {
+  transition: transform var(--dur) var(--ease);
 }
 
 .switch:hover {
@@ -20,11 +21,6 @@
   background: var(--tint);
 }
 
-/* The label is always in the other language, so it uses that language's font. */
-.latin {
-  font-family: var(--font-latin);
-}
-
-.arabic {
-  font-family: var(--font-arabic);
+.switch:hover svg {
+  transform: rotate(-12deg) scale(1.08);
 }

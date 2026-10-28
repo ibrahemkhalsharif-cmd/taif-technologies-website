@@ -46,7 +46,7 @@ export function SectionHeader({
   className,
 }: SectionHeaderProps) {
   return (
-    <header className={[styles.header, className].filter(Boolean).join(' ')}>
+    <header className={['stagger', styles.header, className].filter(Boolean).join(' ')}>
       {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
       <Heading id={titleId} className={Heading === 'h1' ? styles.titleLarge : styles.title}>
         {title}

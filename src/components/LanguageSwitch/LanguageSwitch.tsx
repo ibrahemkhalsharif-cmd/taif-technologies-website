@@ -4,14 +4,8 @@ import { useLanguage, type Lang } from '../../i18n/context';
 import { switchLanguagePath } from '../../i18n/paths';
 import styles from './LanguageSwitch.module.css';
 
-/** Links to the same page in the other language. */
-export function LanguageSwitch({
-  className,
-  onSwitch,
-}: {
-  className?: string;
-  onSwitch?: () => void;
-}) {
+/** Icon button linking to the same page in the other language. Named for screen readers and on hover. */
+export function LanguageSwitch({ onSwitch }: { onSwitch?: () => void }) {
   const { t } = useLanguage();
   const { pathname, search, hash } = useLocation();
   const target = t.nav.switchLang as Lang;
@@ -22,13 +16,11 @@ export function LanguageSwitch({
       lang={target}
       hrefLang={target}
       aria-label={t.nav.switchAria}
-      className={[styles.switch, className].filter(Boolean).join(' ')}
+      title={t.nav.switchAria}
+      className={styles.switch}
       onClick={onSwitch}
     >
-      <Languages size={18} className="lang-icon" aria-hidden="true" />
-      <span className={`lang-label ${target === 'en' ? styles.latin : styles.arabic}`}>
-        {t.nav.switchLabel}
-      </span>
+      <Languages size={19} aria-hidden="true" />
     </Link>
   );
 }

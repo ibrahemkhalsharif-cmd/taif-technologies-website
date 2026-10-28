@@ -23,6 +23,11 @@
   block-size: 3px;
   border-radius: var(--r-full);
   background: var(--link);
+  transition: inline-size 0.5s var(--ease);
+}
+
+.item:hover::before {
+  inline-size: 6rem;
 }
 
 [data-tone='cream'] .item::before {

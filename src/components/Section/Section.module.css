@@ -26,6 +26,13 @@
   block-size: 4px;
   border-radius: var(--r-full);
   background: var(--link);
+  transform-origin: var(--start);
+  transition: transform 0.8s var(--ease) 0.35s;
+}
+
+/* The bar draws itself when the section scrolls in */
+:global([data-reveal='pending']) .eyebrow::before {
+  transform: scaleX(0);
 }
 
 [data-tone='cream'] .eyebrow::before {

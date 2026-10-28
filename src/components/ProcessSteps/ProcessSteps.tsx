@@ -10,7 +10,7 @@ export function ProcessSteps() {
       <div className={styles.track} aria-hidden="true">
         <span className={styles.fill} />
       </div>
-      <ol role="list" className={styles.steps}>
+      <ol role="list" className={`stagger ${styles.steps}`}>
         {t.process.steps.map((step, i) => (
           <li key={step.title} className={styles.step}>
             <span className={styles.number} aria-hidden="true">

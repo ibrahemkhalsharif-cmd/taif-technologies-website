@@ -86,7 +86,7 @@ export function Home() {
           <p className={styles.servicesLead}>{t.homeServices.lead}</p>
         </div>
 
-        <ol role="list" className={styles.rows}>
+        <ol role="list" className={`stagger ${styles.rows}`}>
           {SERVICE_IDS.map((id, i) => {
             const Icon = SERVICE_ICONS[id];
             const service = t.services[id];
@@ -112,11 +112,13 @@ export function Home() {
       </Section>
 
       <Section tone="cream" labelledBy="promise-title" className={styles.promiseSection}>
-        <p className={styles.promiseEyebrow}>{t.promise.eyebrow}</p>
-        <h2 id="promise-title" className={styles.statement}>
-          <span className={styles.statementFill}>{t.promise.title}</span>
-        </h2>
-        <p className={styles.promiseBody}>{t.promise.body}</p>
+        <div className="stagger">
+          <p className={styles.promiseEyebrow}>{t.promise.eyebrow}</p>
+          <h2 id="promise-title" className={styles.statement}>
+            <span className={styles.statementFill}>{t.promise.title}</span>
+          </h2>
+          <p className={styles.promiseBody}>{t.promise.body}</p>
+        </div>
         <TraitList />
       </Section>
 

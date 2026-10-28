@@ -89,7 +89,7 @@ export function Services() {
 
               <div className={styles.details}>
                 <h3 className={styles.detailsTitle}>{s.includesTitle}</h3>
-                <ul role="list" className={styles.includes}>
+                <ul role="list" className={`stagger ${styles.includes}`}>
                   {service.includes.map((item) => (
                     <li key={item}>
                       <Check size={20} aria-hidden="true" />

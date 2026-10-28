@@ -64,6 +64,7 @@
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   font-weight: var(--fw-bold);
+  transition: transform 0.4s var(--ease);
 }
 
 .title {
@@ -117,5 +118,22 @@
 @keyframes grow-x {
   from {
     transform: scaleX(0);
+  }
+}
+
+/* Step numbers pop and send a ring on hover */
+
+.step:hover .number {
+  transform: scale(1.12);
+  animation: step-ring 0.9s var(--ease);
+}
+
+@keyframes step-ring {
+  from {
+    box-shadow: 0 0 0 0 var(--orange);
+  }
+
+  to {
+    box-shadow: 0 0 0 14px transparent;
   }
 }

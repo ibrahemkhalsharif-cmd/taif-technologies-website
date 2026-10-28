@@ -16,6 +16,7 @@
   background-image: radial-gradient(rgb(244 239 230 / 10%) 1px, transparent 1.6px);
   background-size: 28px 28px;
   mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  animation: grid-drift 40s linear infinite;
 }
 
 .heroInner {
@@ -72,11 +73,14 @@
 .arms span {
   block-size: 5px;
   border-radius: var(--r-full);
+  transform-origin: var(--start);
+  animation: arm-breathe 3.2s var(--ease) 2.5s infinite;
 }
 
 .arms span:first-child {
   inline-size: 6px;
   background: var(--orange);
+  animation-delay: 2.7s;
 }
 
 .arms span:last-child {
@@ -175,6 +179,8 @@
   display: flex;
   block-size: 6px;
   direction: ltr;
+  position: relative;
+  overflow: hidden;
 }
 
 .spectrumBar span:nth-child(1) {
@@ -453,5 +459,62 @@
     background-size:
       100% 100%,
       100% 100%;
+  }
+}
+
+/* ---------- Ambient and hover motion ---------- */
+
+/* The dot grid drifts slowly */
+
+/* The tagline's two arms take a breath now and then */
+
+/* A soft shine runs along the colour strip */
+
+.spectrumBar::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 18%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 55%), transparent);
+  animation: sheen 5s var(--ease) 2s infinite;
+}
+
+/* Service icons tilt on hover */
+.rowIcon svg {
+  transition: transform 0.45s var(--ease);
+}
+
+.row:hover .rowIcon svg,
+.row:focus-visible .rowIcon svg {
+  transform: rotate(-10deg) scale(1.15);
+}
+
+@keyframes grid-drift {
+  to {
+    background-position: 28px 56px;
+  }
+}
+
+@keyframes arm-breathe {
+  0%,
+  60%,
+  100% {
+    transform: scaleX(1);
+  }
+
+  30% {
+    transform: scaleX(1.6);
+  }
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  60%,
+  100% {
+    transform: translateX(650%);
   }
 }

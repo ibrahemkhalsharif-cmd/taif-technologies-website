@@ -9,6 +9,14 @@
   transform: scaleX(var(--dir));
 }
 
+/* Looping animations stop while the drawing is off screen */
+.hero[data-paused] *,
+.band[data-paused] * {
+  animation-play-state: paused;
+}
+
+/* ---------- The lines themselves: drawn in once ---------- */
+
 .quiet,
 .accent,
 .beam {
@@ -50,23 +58,71 @@
   animation-duration: 1.4s;
 }
 
-.ring {
+/* ---------- Pulses: short bright segments travelling along each line, speeding up at the end ---------- */
+
+.pulse,
+.pulseAccent,
+.beamPulse {
   fill: none;
-  stroke: var(--cream);
-  stroke-opacity: 0.08;
-  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: 0.09 0.91;
+  stroke-dashoffset: 0.09;
   opacity: 0;
-  animation: fade 1.2s var(--ease) both;
-  animation-delay: calc(1.3s + var(--i, 0) * 200ms);
+  animation: pulse var(--pulse-duration, 2.8s) cubic-bezier(0.5, 0, 0.9, 0.5) var(--pulse-delay, 2s)
+    infinite;
 }
+
+.pulse {
+  stroke: var(--cream);
+  stroke-width: 2;
+  stroke-opacity: 0.9;
+}
+
+.pulseAccent {
+  stroke: var(--svc);
+  stroke-width: 4;
+}
+
+/* The beam carries the pulse on from the mark, in rhythm with the heartbeat */
+.beamPulse {
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-dasharray: 0.12 0.88;
+  stroke-dashoffset: 0.12;
+  animation-name: pulse-beam;
+  animation-duration: 1.8s;
+  animation-delay: 2.6s;
+  animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+}
+
+/* ---------- The mark: appears, then beats ---------- */
 
 /* The official mark, counter-flipped so it is never mirrored */
 .mark {
   transform-box: fill-box;
   transform-origin: center;
   transform: scaleX(var(--dir));
-  animation: mark-in 0.9s var(--ease) 1.2s both;
+  animation:
+    mark-in 0.9s var(--ease) 1.2s both,
+    heartbeat 1.8s var(--ease) 2.4s infinite;
 }
+
+.ripple {
+  fill: none;
+  stroke: var(--teal-light);
+  stroke-width: 1.5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ripple 3.6s cubic-bezier(0.2, 0.6, 0.4, 1) 2.4s infinite;
+}
+
+.rippleLate {
+  stroke: var(--cream);
+  animation-delay: 4.2s;
+}
+
+/* ---------- Band variant ---------- */
 
 .band .quiet {
   stroke-width: 1.5;
@@ -76,15 +132,53 @@
   stroke-width: 3;
 }
 
+.band .pulse {
+  stroke-width: 2.5;
+}
+
+.band .pulseAccent {
+  stroke-width: 5;
+}
+
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
   }
 }
 
-@keyframes fade {
-  to {
+@keyframes pulse {
+  0% {
+    stroke-dashoffset: 0.09;
+    opacity: 0;
+  }
+
+  12% {
     opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: -0.91;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-beam {
+  0% {
+    stroke-dashoffset: 0.12;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  100% {
+    stroke-dashoffset: -0.88;
+    opacity: 0;
   }
 }
 
@@ -92,5 +186,34 @@
   from {
     opacity: 0;
     transform: scaleX(var(--dir)) scale(0.82);
+  }
+}
+
+/* Two quick beats, then rest: lub-dub */
+@keyframes heartbeat {
+  0%,
+  40%,
+  100% {
+    transform: scaleX(var(--dir)) scale(1);
+  }
+
+  12% {
+    transform: scaleX(var(--dir)) scale(1.07);
+  }
+
+  26% {
+    transform: scaleX(var(--dir)) scale(1.03);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3.2);
   }
 }

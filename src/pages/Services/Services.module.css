@@ -307,3 +307,28 @@
     transform: translateY(14px);
   }
 }
+
+/* ---------- Ambient and hover motion ---------- */
+
+.bigNumber:not(.numberArrive) {
+  animation: number-float 9s ease-in-out infinite;
+}
+
+.includes li svg {
+  transition: transform 0.35s var(--ease);
+}
+
+.includes li:hover svg {
+  transform: scale(1.3);
+}
+
+@keyframes number-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}

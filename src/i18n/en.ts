@@ -266,6 +266,7 @@ const en = {
     description:
       'Software development, IT consulting, custom software and computer equipment, from one technology partner.',
     navTitle: 'Company',
+    servicesTitle: 'Services',
     contactTitle: 'Get in touch',
     location: 'Ramallah',
     contactLink: 'Send us an inquiry',

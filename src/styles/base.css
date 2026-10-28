@@ -156,6 +156,46 @@ body,
     transform var(--dur-slow) var(--ease);
 }
 
+/*
+ * Cascade: direct children of .stagger rise in one after another once their section is revealed.
+ * Only applies when useReveal marked the section as waiting (never with reduced motion).
+ */
+[data-reveal='pending'] .stagger > * {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-reveal='visible'] .stagger > * {
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+  transition-delay: calc(0.1s + var(--si, 0) * 90ms);
+}
+
+.stagger > :nth-child(2) {
+  --si: 1;
+}
+
+.stagger > :nth-child(3) {
+  --si: 2;
+}
+
+.stagger > :nth-child(4) {
+  --si: 3;
+}
+
+.stagger > :nth-child(5) {
+  --si: 4;
+}
+
+.stagger > :nth-child(6) {
+  --si: 5;
+}
+
+.stagger > :nth-child(n + 7) {
+  --si: 6;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

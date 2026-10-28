@@ -5,7 +5,7 @@ import styles from './TraitList.module.css';
 export function TraitList() {
   const { t } = useLanguage();
   return (
-    <ul role="list" className={styles.list}>
+    <ul role="list" className={`stagger ${styles.list}`}>
       {t.traits.map((trait, i) => (
         <li key={trait.title} className={styles.item}>
           <span className={styles.index} aria-hidden="true">
