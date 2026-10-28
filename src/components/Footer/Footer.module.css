@@ -1,31 +1,30 @@
 .footer {
-  padding-block: var(--sp-16) var(--sp-8);
+  padding-block: var(--sp-10) var(--sp-5);
   font-size: var(--fs-sm);
 }
 
+/* Phones: one compact column; links run in rows instead of stacked lists */
 .grid {
   display: grid;
-  gap: var(--sp-10) var(--sp-8);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-5);
 }
 
 .brand {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--sp-4);
-  grid-column: 1 / -1;
+  gap: var(--sp-3);
 }
 
 .logoLink {
   display: inline-flex;
-  margin-block-end: var(--sp-2);
   border-radius: var(--r-sm);
 }
 
 .description {
-  max-inline-size: 26rem;
+  max-inline-size: 24rem;
   color: var(--text-muted);
+  line-height: 1.55;
 }
 
 .tagline {
@@ -34,7 +33,7 @@
 }
 
 .title {
-  margin-block-end: var(--sp-4);
+  margin-block-end: var(--sp-3);
   color: var(--text);
   font-size: var(--fs-sm);
   font-weight: var(--fw-bold);
@@ -43,7 +42,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   margin: 0;
 }
 
@@ -71,21 +70,63 @@
   color: var(--link);
 }
 
+/* The service list repeats the Services page; phones skip it */
+.servicesCol {
+  display: none;
+}
+
 .bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sp-4);
-  margin-block-start: var(--sp-12);
-  padding-block-start: var(--sp-6);
+  gap: var(--sp-3);
+  margin-block-start: var(--sp-8);
+  padding-block-start: var(--sp-4);
   border-block-start: 1px solid var(--border);
   color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+@media (width < 48em) {
+  /* The header already has the language switch on phones */
+  .bottomSwitch {
+    display: none;
+  }
+
+  .inlineCol .title {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .inlineCol .list {
+    flex-flow: row wrap;
+    gap: var(--sp-2) var(--sp-5);
+  }
+}
+
+@media (width >= 48em) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-8);
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+
+  .servicesCol {
+    display: block;
+  }
 }
 
 @media (width >= 64em) {
   .grid {
-    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
   }
 
   .brand {

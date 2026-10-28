@@ -17,13 +17,13 @@ export function Footer() {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <Link to={path('/')} className={styles.logoLink}>
-              <Logo variant="reverse" width={140} />
+              <Logo variant="reverse" width={120} />
             </Link>
             <p className={styles.description}>{t.footer.description}</p>
             <p className={styles.tagline}>{t.tagline}</p>
           </div>
 
-          <nav aria-labelledby="footer-nav">
+          <nav aria-labelledby="footer-nav" className={styles.inlineCol}>
             <h2 id="footer-nav" className={styles.title}>
               {t.footer.navTitle}
             </h2>
@@ -38,7 +38,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-services">
+          <nav aria-labelledby="footer-services" className={styles.servicesCol}>
             <h2 id="footer-services" className={styles.title}>
               {t.footer.servicesTitle}
             </h2>
@@ -53,7 +53,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div>
+          <div className={styles.inlineCol}>
             <h2 className={styles.title}>{t.footer.contactTitle}</h2>
             <ul role="list" className={styles.list}>
               <li className={styles.location}>
@@ -77,7 +77,7 @@ export function Footer() {
             </span>
             . {t.footer.rights}
           </p>
-          <LanguageSwitch />
+          <LanguageSwitch className={styles.bottomSwitch} />
         </div>
       </div>
     </footer>
