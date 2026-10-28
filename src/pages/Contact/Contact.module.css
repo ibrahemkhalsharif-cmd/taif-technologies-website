@@ -1,0 +1,90 @@
+.layout {
+  display: grid;
+  gap: var(--sp-12);
+  align-items: start;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-radius: var(--r-lg);
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.asideTitle {
+  font-size: var(--fs-lg);
+}
+
+.steps {
+  display: grid;
+  gap: var(--sp-4);
+  margin: 0;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  color: color-mix(in srgb, var(--cream) 80%, var(--navy));
+}
+
+.stepNumber {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  border-radius: 50%;
+  background: var(--navy-2);
+  color: var(--orange);
+  font-family: var(--font-latin);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+}
+
+.details {
+  margin: 0;
+  padding-block-start: var(--sp-6);
+  border-block-start: 1px solid rgb(244 239 230 / 14%);
+}
+
+.details dt {
+  margin-block-end: var(--sp-1);
+  color: color-mix(in srgb, var(--cream) 70%, var(--navy));
+  font-size: var(--fs-sm);
+}
+
+.details address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+
+.details dd {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  margin: 0;
+  font-weight: var(--fw-medium);
+}
+
+.details svg {
+  flex: none;
+  margin-block-start: 0.25em;
+  color: var(--teal-light);
+}
+
+@media (width >= 64em) {
+  .layout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: var(--sp-16);
+  }
+
+  .aside {
+    position: sticky;
+    inset-block-start: calc(var(--header-h) + var(--sp-8));
+  }
+}

@@ -1,0 +1,169 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.title {
+  font-size: var(--fs-xl);
+}
+
+.grid {
+  display: grid;
+  gap: var(--sp-6) var(--sp-5);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-inline-size: 0;
+}
+
+.label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.optional,
+.hint {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+}
+
+/* Input borders use gray: 3.6:1 against white, above the 3:1 needed for controls */
+.control {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1.5px solid var(--control-border);
+  border-radius: var(--r-md);
+  background: var(--white);
+  color: var(--navy);
+  line-height: 1.5;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.control:hover {
+  border-color: var(--slate);
+}
+
+.control:focus-visible {
+  border-color: var(--teal);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 30%, transparent);
+}
+
+/* No red in the brand palette: invalid fields get a thicker navy border plus the message and icon */
+.control[aria-invalid='true'] {
+  border-width: 2px;
+  border-color: var(--navy);
+  border-inline-start: 6px solid var(--orange);
+}
+
+textarea.control {
+  min-block-size: 9rem;
+  resize: vertical;
+}
+
+input[dir='ltr'].control {
+  text-align: start;
+}
+
+[dir='rtl'] input[dir='ltr'].control {
+  text-align: end;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap select {
+  appearance: none;
+  padding-inline-end: var(--sp-10);
+  cursor: pointer;
+}
+
+.chevron {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: var(--sp-4);
+  color: var(--slate);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.error,
+.summary {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  color: var(--navy);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.error svg,
+.summary svg {
+  flex: none;
+  margin-block-start: 0.15em;
+  color: var(--orange);
+}
+
+.summary {
+  padding: var(--sp-3) var(--sp-4);
+  border-inline-start: 4px solid var(--orange);
+  border-radius: var(--r-sm);
+  background: var(--cream);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-4);
+}
+
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+}
+
+.notice svg {
+  flex: none;
+}
+
+.success {
+  border: 1px solid var(--teal);
+  background: var(--tint);
+}
+
+.success svg {
+  color: var(--teal);
+}
+
+.warning {
+  border-inline-start: 4px solid var(--orange);
+  background: var(--cream);
+}
+
+.warning svg {
+  color: var(--navy);
+}
+
+@media (width >= 40em) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wide {
+    grid-column: 1 / -1;
+  }
+}

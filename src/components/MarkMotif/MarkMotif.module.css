@@ -1,0 +1,24 @@
+.motif {
+  position: absolute;
+  inset-block-end: -11rem;
+  inset-inline-end: -6rem;
+  z-index: -1;
+  display: none;
+  inline-size: clamp(18rem, 10rem + 20vw, 30rem);
+  block-size: auto;
+  pointer-events: none;
+}
+
+.motif path {
+  fill: none;
+  stroke: var(--navy-2);
+  stroke-width: 7.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (width >= 48em) {
+  .motif {
+    display: block;
+  }
+}

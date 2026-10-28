@@ -1,0 +1,169 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  text-size-adjust: 100%;
+  scroll-padding-block-start: calc(var(--header-h) + var(--sp-4));
+}
+
+/* Large screens grow the root size; everything is in rem, so the layout scales with it. */
+@media (width >= 120em) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (width >= 160em) {
+  html {
+    font-size: 125%;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--white);
+}
+
+[data-tone] {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Layout helpers */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Directional icons (arrows, chevrons) point the other way in RTL. Never applied to the logo. */
+.icon-dir {
+  transform: scaleX(var(--dir));
+}
+
+/* Brand name always set in Poppins, even inside Arabic text. */
+.brand-name {
+  font-family: var(--font-latin);
+  unicode-bidi: isolate;
+}
+
+/* Scroll reveal: content is visible unless JS marks it as waiting. */
+[data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-reveal='visible'] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal='pending'] {
+    opacity: 1;
+    transform: none;
+  }
+}

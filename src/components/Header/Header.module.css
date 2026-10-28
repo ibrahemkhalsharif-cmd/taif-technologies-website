@@ -1,0 +1,126 @@
+/* Colours come from the data-tone the header switches between (white / navy). */
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-header);
+  border-block-end: 1px solid var(--border);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.header[data-tone='navy'] {
+  border-color: transparent;
+}
+
+.header[data-scrolled] {
+  border-color: transparent;
+  box-shadow: 0 1px 0 var(--border), 0 10px 30px -18px rgb(19 27 46 / 35%);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+  min-block-size: var(--header-h);
+}
+
+.logoLink {
+  display: inline-flex;
+  flex: none;
+  border-radius: var(--r-sm);
+}
+
+.nav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  gap: var(--sp-8);
+  margin: 0;
+}
+
+.navLink {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--sp-2);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  opacity: 0.82;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+
+.navLink:hover,
+.active {
+  opacity: 1;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 2px;
+  border-radius: var(--r-full);
+  background: var(--link);
+  transform: scaleX(0);
+  transform-origin: var(--start);
+  transition: transform var(--dur) var(--ease);
+}
+
+.navLink:hover::after,
+.active::after {
+  transform: scaleX(1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-inline-start: auto;
+}
+
+.cta {
+  display: none;
+}
+
+.menuButton {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text);
+}
+
+.menuButton:hover {
+  background: var(--tint);
+}
+
+@media (width >= 48em) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+@media (width >= 64em) {
+  .nav {
+    display: block;
+    margin-inline-start: auto;
+  }
+
+  .actions {
+    margin-inline-start: 0;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

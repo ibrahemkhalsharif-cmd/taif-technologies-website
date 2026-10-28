@@ -1,0 +1,446 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2.5rem, 1rem + 5vw, 5rem) 0;
+}
+
+/* Fine dot grid, fading out toward the bottom */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgb(244 239 230 / 10%) 1px, transparent 1.6px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+}
+
+.heroInner {
+  display: grid;
+  gap: var(--sp-8);
+  align-items: center;
+  min-block-size: min(46rem, calc(100svh - var(--header-h) - 6px));
+  padding-block-end: clamp(2.5rem, 1rem + 4vw, 4.5rem);
+}
+
+.heroText {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-6);
+}
+
+/* Staggered entrance */
+.heroText > * {
+  animation: rise 0.9s var(--ease) both;
+  animation-delay: calc(0.1s + var(--i, 0) * 0.12s);
+}
+
+.tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background: rgb(31 45 74 / 60%);
+  color: var(--cream);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+/* Spaced-capital tagline, as on the business card (Latin only) */
+:lang(en) .tagline {
+  color: var(--teal-light);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* The two arms of the mark, in their fixed brand order */
+.arms {
+  display: inline-flex;
+  gap: 4px;
+  direction: ltr;
+}
+
+.arms span {
+  block-size: 5px;
+  border-radius: var(--r-full);
+}
+
+.arms span:first-child {
+  inline-size: 6px;
+  background: var(--orange);
+}
+
+.arms span:last-child {
+  inline-size: 16px;
+  background: var(--teal-light);
+}
+
+.heroTitle {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.titleLead {
+  display: block;
+}
+
+.titleAccent {
+  color: var(--teal-light);
+}
+
+.underlined {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* One deliberate orange stroke under the last word, drawn in after the title */
+.underlined::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0.05em 0.3em;
+  inset-block-end: -0.02em;
+  block-size: max(5px, 0.07em);
+  border-radius: var(--r-full);
+  background: var(--orange);
+  transform-origin: var(--start);
+  animation: underline 0.9s var(--ease) 1s both;
+}
+
+.heroLead {
+  max-inline-size: 34rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+.legend ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin: 0;
+  padding-block-start: var(--sp-5);
+  border-block-start: 1px solid var(--border);
+}
+
+.legend a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-block: var(--sp-1);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.legend a::before {
+  content: '';
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: var(--svc);
+}
+
+.legend a:hover {
+  color: var(--cream);
+}
+
+.heroArt {
+  position: relative;
+  inline-size: min(100%, 26rem);
+  aspect-ratio: 1;
+  justify-self: center;
+  pointer-events: none;
+}
+
+/* The business-card strip: short orange, long teal, in the mark's fixed order */
+.spectrumBar {
+  display: flex;
+  block-size: 6px;
+  direction: ltr;
+}
+
+.spectrumBar span:nth-child(1) {
+  flex: 1;
+  background: var(--orange);
+}
+
+.spectrumBar span:nth-child(2) {
+  flex: 6;
+  background: var(--teal);
+}
+
+/* ---------- Services ---------- */
+
+.servicesHead {
+  display: grid;
+  gap: var(--sp-6);
+  margin-block-end: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+
+.servicesLead {
+  max-inline-size: 30rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+.rows {
+  margin: 0;
+  border-block-end: 1px solid var(--border);
+}
+
+.row {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    'num title arrow'
+    'num summary arrow';
+  gap: var(--sp-2) var(--sp-5);
+  align-items: center;
+  padding-block: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
+  padding-inline: var(--sp-2);
+  border-block-start: 1px solid var(--border);
+  color: var(--navy);
+  text-decoration: none;
+}
+
+/* Tint sweeping in from the start edge on hover */
+.row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--svc) 9%, var(--white));
+  transform: scaleX(0);
+  transform-origin: var(--start);
+  transition: transform 0.55s var(--ease);
+}
+
+/* Service colour line growing along the top edge */
+.row::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: -1px;
+  block-size: 2px;
+  background: var(--svc);
+  transform: scaleX(0);
+  transform-origin: var(--start);
+  transition: transform 0.7s var(--ease);
+}
+
+.row:hover::before,
+.row:focus-visible::before,
+.row:hover::after,
+.row:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.rowNumber {
+  grid-area: num;
+  align-self: start;
+  padding-block-start: 0.55em;
+  color: var(--slate);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.rowIcon {
+  display: none;
+}
+
+.rowTitle {
+  grid-area: title;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+  transition: transform 0.55s var(--ease);
+}
+
+.rowSummary {
+  grid-area: summary;
+  max-inline-size: 34rem;
+  color: var(--text-muted);
+}
+
+.rowArrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.row:hover .rowArrow,
+.row:focus-visible .rowArrow {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.row:hover .rowTitle {
+  transform: translateX(calc(8px * var(--dir)));
+}
+
+/* ---------- Promise ---------- */
+
+.promiseEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-block-end: var(--sp-6);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.promiseEyebrow::before {
+  content: '';
+  inline-size: 1.5rem;
+  block-size: 4px;
+  border-radius: var(--r-full);
+  background: var(--teal);
+}
+
+.statement {
+  max-inline-size: 22ch;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.promiseBody {
+  max-inline-size: 38rem;
+  margin-block: var(--sp-8) clamp(3.5rem, 2rem + 5vw, 6rem);
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+/*
+ * The statement fills in, line by line, as it scrolls through the viewport.
+ * Browsers without scroll-driven animations (or with reduced motion) show it fully.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .statementFill {
+      background-image:
+        linear-gradient(var(--navy), var(--navy)),
+        linear-gradient(rgb(19 27 46 / 16%), rgb(19 27 46 / 16%));
+      background-position: var(--start) top;
+      background-repeat: no-repeat;
+      background-size:
+        0% 100%,
+        100% 100%;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fill-text linear both;
+      animation-timeline: view();
+      animation-range: entry 25% cover 45%;
+    }
+  }
+}
+
+/* ---------- Process ---------- */
+
+.processHead {
+  margin-block-end: clamp(3rem, 2rem + 3vw, 4.5rem);
+}
+
+/* ---------- Layout breakpoints ---------- */
+
+@media (width >= 48em) {
+  .heroArt {
+    inline-size: min(100%, 32rem);
+  }
+
+  .row {
+    grid-template-columns: 3rem 3.5rem minmax(0, 1fr) minmax(0, 1fr) 3rem;
+    grid-template-areas: 'num icon title summary arrow';
+    gap: var(--sp-6);
+  }
+
+  .rowNumber {
+    align-self: center;
+    padding-block-start: 0;
+  }
+
+  .rowIcon {
+    grid-area: icon;
+    display: grid;
+    place-items: center;
+    inline-size: 3.5rem;
+    block-size: 3.5rem;
+    border-radius: var(--r-md);
+    background: var(--navy);
+    color: var(--svc);
+  }
+}
+
+@media (width >= 64em) {
+  .heroInner {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    gap: var(--sp-8);
+  }
+
+  .heroArt {
+    inline-size: 100%;
+    max-inline-size: 38rem;
+  }
+
+  .servicesHead {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--sp-16);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes underline {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fill-text {
+  to {
+    background-size:
+      100% 100%,
+      100% 100%;
+  }
+}

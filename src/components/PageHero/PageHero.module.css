@@ -1,0 +1,64 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 2rem + 6vw, 7.5rem) clamp(3.5rem, 2.5rem + 4vw, 6rem);
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.7;
+
+  /* Lines gather behind the end side; the mask flips with the drawing in RTL */
+  mask-image: linear-gradient(to right, transparent 30%, #000 85%);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-6);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  animation: rise 0.8s var(--ease) both;
+}
+
+.eyebrow::before {
+  content: '';
+  inline-size: 1.5rem;
+  block-size: 4px;
+  border-radius: var(--r-full);
+  background: var(--teal-light);
+}
+
+.title {
+  max-inline-size: 18ch;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  animation: rise 0.8s var(--ease) 0.1s both;
+}
+
+.lead {
+  max-inline-size: 38rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  animation: rise 0.8s var(--ease) 0.2s both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}

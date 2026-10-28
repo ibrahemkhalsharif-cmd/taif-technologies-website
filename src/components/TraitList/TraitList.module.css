@@ -1,0 +1,56 @@
+.list {
+  display: grid;
+  gap: var(--sp-10);
+  margin: 0;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-block-start: var(--sp-6);
+  border-block-start: 1px solid var(--border);
+}
+
+/* Short accent segment sitting on the rule, like the arm of the mark */
+.item::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -2px;
+  inset-inline-start: 0;
+  inline-size: 3rem;
+  block-size: 3px;
+  border-radius: var(--r-full);
+  background: var(--link);
+}
+
+[data-tone='cream'] .item::before {
+  background: var(--teal);
+}
+
+.index {
+  color: var(--text-muted);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.title {
+  font-size: var(--fs-2xl);
+  overflow-wrap: break-word;
+}
+
+.body {
+  max-inline-size: 22rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+/* Three columns only when long English words like "Comprehensive" fit at this size */
+@media (width >= 64em) {
+  .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--sp-10);
+  }
+}

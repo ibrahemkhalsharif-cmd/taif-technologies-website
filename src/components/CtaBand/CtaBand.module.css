@@ -1,0 +1,66 @@
+.band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(5rem, 3rem + 7vw, 9rem);
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.6;
+
+  /* Fade the lines out behind the text. The mask flips with the drawing in RTL. */
+  mask-image: linear-gradient(to right, transparent 15%, #000 75%);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-6);
+}
+
+/* The two arms of the mark: short orange, longer teal (kept in brand order in both directions) */
+.arms {
+  display: flex;
+  gap: var(--sp-2);
+  direction: ltr;
+}
+
+.arms span {
+  block-size: 6px;
+  border-radius: var(--r-full);
+}
+
+.arms span:first-child {
+  inline-size: 0.75rem;
+  background: var(--orange);
+}
+
+.arms span:last-child {
+  inline-size: 2.5rem;
+  background: var(--teal-light);
+}
+
+.title {
+  max-inline-size: 16ch;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.body {
+  max-inline-size: 34rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+.button {
+  min-block-size: 3.5rem;
+  margin-block-start: var(--sp-2);
+  padding-inline: var(--sp-8);
+  font-size: var(--fs-md);
+}

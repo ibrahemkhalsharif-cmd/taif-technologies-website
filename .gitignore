@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+
+# Local tooling and notes not part of the site
+.claude/
+campus-design-system.md

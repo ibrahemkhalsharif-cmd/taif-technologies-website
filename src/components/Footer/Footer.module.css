@@ -1,0 +1,114 @@
+.footer {
+  padding-block: var(--sp-16) var(--sp-8);
+  font-size: var(--fs-sm);
+}
+
+.grid {
+  display: grid;
+  gap: var(--sp-10) var(--sp-8);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-4);
+  grid-column: 1 / -1;
+}
+
+.logoLink {
+  display: inline-flex;
+  margin-block-end: var(--sp-2);
+  border-radius: var(--r-sm);
+}
+
+.description {
+  max-inline-size: 26rem;
+  color: var(--text-muted);
+}
+
+.tagline {
+  color: var(--text);
+  font-weight: var(--fw-medium);
+}
+
+.title {
+  margin-block-end: var(--sp-4);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.link:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.location {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  color: var(--text-muted);
+}
+
+.location address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+
+.location svg {
+  flex: none;
+  margin-block-start: 0.2em;
+  color: var(--link);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-block-start: var(--sp-12);
+  padding-block-start: var(--sp-6);
+  border-block-start: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Spaced-capital label line, as on the letterhead footer (Latin only; Arabic letters are never tracked) */
+.registration {
+  font-size: var(--fs-xs);
+}
+
+:lang(en) .registration {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (width >= 64em) {
+  .bottom > p:first-child {
+    margin-inline-end: auto;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+}

@@ -1,0 +1,50 @@
+.sheet {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  z-index: var(--z-menu);
+  overflow-y: auto;
+  padding-block: var(--sp-6) var(--sp-10);
+  background: var(--white);
+  animation: sheet-in var(--dur) var(--ease);
+}
+
+.list {
+  margin: 0 0 var(--sp-8);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-block-size: 3.5rem;
+  border-block-end: 1px solid var(--border);
+  color: var(--navy);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+}
+
+.active::before {
+  content: '';
+  inline-size: 4px;
+  block-size: 1.25em;
+  border-radius: var(--r-full);
+  background: var(--teal);
+}
+
+.cta {
+  inline-size: 100%;
+}
+
+.tagline {
+  margin-block-start: var(--sp-8);
+  color: var(--slate);
+  font-size: var(--fs-sm);
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}

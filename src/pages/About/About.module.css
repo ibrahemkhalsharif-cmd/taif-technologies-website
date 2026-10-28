@@ -1,0 +1,151 @@
+.nameLayout {
+  display: grid;
+  gap: var(--sp-12);
+}
+
+.nameText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  max-inline-size: 38rem;
+}
+
+.nameTitle {
+  font-size: var(--fs-2xl);
+}
+
+.paragraph {
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+.paragraph:first-of-type {
+  color: var(--text);
+}
+
+.markPanel {
+  display: grid;
+  gap: var(--sp-6);
+  margin: 0;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-radius: var(--r-lg);
+}
+
+.mark {
+  inline-size: 5rem;
+}
+
+.markCaption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.markTitle {
+  font-size: var(--fs-lg);
+}
+
+.markLead {
+  color: var(--text-muted);
+}
+
+.markList {
+  display: grid;
+  gap: var(--sp-4);
+  margin: 0;
+}
+
+.markItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--sp-3);
+  align-items: baseline;
+}
+
+/* Colour key matching each part of the mark */
+.markItem::before {
+  content: '';
+  grid-row: span 2;
+  inline-size: 1.25rem;
+  block-size: 6px;
+  border-radius: var(--r-full);
+  background: var(--part);
+  transform: translateY(-0.2em);
+}
+
+.markItem[data-part='stem'] {
+  --part: var(--navy);
+}
+
+.markItem[data-part='teal'] {
+  --part: var(--teal);
+}
+
+.markItem[data-part='orange'] {
+  --part: var(--orange);
+}
+
+.markItem dt {
+  font-weight: var(--fw-medium);
+}
+
+.markItem dd {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.traitsHeader {
+  margin-block-end: var(--sp-12);
+}
+
+.promise {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-6);
+  max-inline-size: 52rem;
+}
+
+.promiseEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.promiseEyebrow::before {
+  content: '';
+  inline-size: 1.5rem;
+  block-size: 4px;
+  border-radius: var(--r-full);
+  background: var(--teal);
+}
+
+.promiseText {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  text-wrap: balance;
+}
+
+.promiseActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+
+@media (width >= 64em) {
+  .nameLayout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--sp-16);
+  }
+}
+
+.traitsSection {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}

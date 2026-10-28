@@ -1,0 +1,121 @@
+.wrap {
+  --circle: 3.5rem;
+
+  position: relative;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  gap: var(--sp-10);
+  margin: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-block-size: var(--circle);
+  padding-inline-start: calc(var(--circle) + var(--sp-6));
+  position: relative;
+}
+
+/* Track: vertical on phones, running through the centre of the number circles */
+.track {
+  position: absolute;
+  inset-block: calc(var(--circle) / 2) 0;
+  inset-inline-start: calc(var(--circle) / 2 - 1px);
+  inline-size: 2px;
+  border-radius: var(--r-full);
+  background: var(--border);
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--teal);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fill {
+      transform-origin: top;
+      animation: grow-y linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 60%;
+    }
+  }
+}
+
+/* Highlighted numbers: orange on navy (6.2:1), as the brand guide allows */
+.number {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  display: grid;
+  place-items: center;
+  inline-size: var(--circle);
+  block-size: var(--circle);
+  border: 4px solid var(--bg);
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--orange);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.title {
+  padding-block-start: var(--sp-3);
+  font-size: var(--fs-xl);
+}
+
+.body {
+  color: var(--text-muted);
+}
+
+@media (width >= 64em) {
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--sp-10);
+  }
+
+  .step {
+    padding-inline-start: 0;
+    padding-block-start: calc(var(--circle) + var(--sp-6));
+  }
+
+  .title {
+    padding-block-start: 0;
+  }
+
+  /* Track becomes horizontal and runs on past the last step: support continues */
+  .track {
+    inset-block: calc(var(--circle) / 2 - 1px) auto;
+    inset-inline: calc(var(--circle) / 2) 0;
+    inline-size: auto;
+    block-size: 2px;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .fill {
+        transform-origin: var(--start);
+        animation-name: grow-x;
+      }
+    }
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}

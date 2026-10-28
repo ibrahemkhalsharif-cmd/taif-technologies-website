@@ -1,0 +1,79 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-block-size: 3rem;
+  padding-inline: var(--sp-6);
+  border: 1.5px solid transparent;
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.sm {
+  min-block-size: 2.625rem;
+  padding-inline: var(--sp-4);
+}
+
+/* Navy with cream text: 15:1 */
+.primary {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.primary:hover {
+  background: var(--navy-2);
+}
+
+/* Teal with white text: 4.9:1 */
+.teal {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.teal:hover {
+  background: color-mix(in srgb, var(--teal) 82%, var(--navy));
+}
+
+/* For navy sections: cream with navy text */
+.light {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.light:hover {
+  background: var(--white);
+}
+
+/* Secondary button from the brand template: light cream-grey border, navy text */
+.outline {
+  border-color: var(--outline-border);
+  color: var(--text);
+}
+
+.outline:hover {
+  border-color: var(--text);
+  background: var(--tint);
+}
+
+.arrow {
+  flex: none;
+  transition: transform var(--dur) var(--ease);
+}
+
+.button:hover .arrow {
+  transform: translateX(calc(3px * var(--dir))) scaleX(var(--dir));
+}

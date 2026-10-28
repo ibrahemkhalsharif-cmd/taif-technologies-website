@@ -1,0 +1,161 @@
+/*
+ * Taif Technologies design tokens.
+ * Brand values come from docs/brand/Guide/2-color.md and 3-typography.md.
+ * Components use the semantic tokens (bottom half), never the raw palette or hex values.
+ */
+
+:root {
+  /* Brand palette */
+  --navy: #131b2e;
+  --navy-2: #1f2d4a;
+  --teal: #1e7f72;
+  --teal-light: #3fb8a3; /* from the official reverse logo; teal for text on navy */
+  --orange: #db8935;
+  --cream: #f4efe6;
+  --slate: #4b5565;
+  --gray: #84868b;
+  --white: #fff;
+
+  /* Typography */
+  --font-latin: 'Poppins', system-ui, sans-serif;
+  --font-arabic: 'Tajawal', 'Poppins', system-ui, sans-serif;
+  --font-body: var(--font-latin);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 700;
+  --lh-body: 1.65;
+  --lh-heading: 1.2;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --fs-xl: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --fs-2xl: clamp(1.75rem, 1.35rem + 1.6vw, 2.625rem);
+  --fs-3xl: clamp(2.125rem, 1.45rem + 2.9vw, 3.625rem);
+  --fs-display: clamp(2.5rem, 1.35rem + 4.4vw, 4.75rem);
+  --lh-display: 1.04;
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.02em;
+
+  /* Spacing (4px base) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --section-y: clamp(4rem, 2.6rem + 5.6vw, 7.5rem);
+
+  /* Layout */
+  --container: 75rem;
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem);
+  --header-h: 5.25rem; /* fits the 120px logo plus its clear space (half the mark height) */
+
+  /* Shape and depth */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-full: 999px;
+  --shadow-sm: 0 1px 2px rgb(19 27 46 / 6%);
+  --shadow-md: 0 14px 32px -14px rgb(19 27 46 / 22%);
+
+  /* Layers */
+  --z-header: 200;
+  --z-menu: 400;
+  --z-skip: 700;
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur: 250ms;
+  --dur-slow: 600ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Direction helpers: --dir flips transforms, --start is the physical start edge */
+  --dir: 1;
+  --start: left;
+
+  /* Semantic tokens (white surface is the default context) */
+  --bg: var(--white);
+  --text: var(--navy);
+  --text-muted: var(--slate);
+  --link: var(--teal);
+  --border: rgb(19 27 46 / 12%);
+  --control-border: var(--gray);
+  --focus-ring: var(--teal);
+  --accent: var(--orange);
+  --tint: color-mix(in srgb, var(--teal) 10%, var(--white));
+  --outline-border: color-mix(in srgb, var(--cream) 80%, var(--gray));
+}
+
+[dir='rtl'] {
+  --dir: -1;
+  --start: right;
+}
+
+:root:lang(ar) {
+  --font-body: var(--font-arabic);
+  --fw-display: 800;
+  --lh-body: 1.75;
+  --lh-heading: 1.35;
+  --lh-display: 1.3;
+  --tracking-display: 0; /* Arabic letters connect; never track them */
+  --tracking-heading: 0;
+}
+
+/* One colour per service, used consistently in the hero art, legend and service rows */
+[data-service='software'] {
+  --svc: var(--teal-light);
+}
+
+[data-service='consulting'] {
+  --svc: var(--orange);
+}
+
+[data-service='custom'] {
+  --svc: var(--teal);
+}
+
+[data-service='hardware'] {
+  --svc: var(--gray);
+}
+
+/*
+ * Surface contexts. Any element with data-tone resets the semantic tokens,
+ * so everything inside stays readable (contrast values in README).
+ */
+[data-tone='white'] {
+  --bg: var(--white);
+  --text: var(--navy);
+  --text-muted: var(--slate);
+  --link: var(--teal);
+  --border: rgb(19 27 46 / 12%);
+  --focus-ring: var(--teal);
+  --tint: color-mix(in srgb, var(--teal) 10%, var(--white));
+}
+
+[data-tone='cream'] {
+  --bg: var(--cream);
+  --text: var(--navy);
+  --text-muted: var(--slate);
+  --link: var(--navy); /* teal on cream is 4.2:1, too low for body-size text */
+  --border: rgb(19 27 46 / 14%);
+  --focus-ring: var(--teal);
+  --tint: color-mix(in srgb, var(--teal) 12%, var(--cream));
+}
+
+[data-tone='navy'] {
+  --bg: var(--navy);
+  --text: var(--cream);
+  --text-muted: color-mix(in srgb, var(--cream) 76%, var(--navy));
+  --link: var(--teal-light);
+  --border: rgb(244 239 230 / 14%);
+  --control-border: color-mix(in srgb, var(--cream) 45%, var(--navy));
+  --outline-border: rgb(244 239 230 / 35%);
+  --focus-ring: var(--teal-light);
+  --tint: var(--navy-2);
+}
