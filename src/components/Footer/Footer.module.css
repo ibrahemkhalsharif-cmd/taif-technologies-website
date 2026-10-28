@@ -1,12 +1,13 @@
 .footer {
-  padding-block: var(--sp-10) var(--sp-5);
+  padding-block: var(--sp-8) var(--sp-4);
   font-size: var(--fs-sm);
 }
 
-/* Phones: one compact column; links run in rows instead of stacked lists */
-.grid {
-  display: grid;
-  gap: var(--sp-5);
+/* Phones: stacked; wider screens: brand, links and contact on one row */
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
 }
 
 .brand {
@@ -22,27 +23,16 @@
 }
 
 .description {
-  max-inline-size: 24rem;
+  max-inline-size: 22rem;
   color: var(--text-muted);
+  font-size: var(--fs-xs);
   line-height: 1.55;
-}
-
-.tagline {
-  color: var(--text);
-  font-weight: var(--fw-medium);
-}
-
-.title {
-  margin-block-end: var(--sp-3);
-  color: var(--text);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
 }
 
 .list {
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
   margin: 0;
 }
 
@@ -59,77 +49,29 @@
 
 .location {
   display: flex;
-  align-items: flex-start;
-  gap: var(--sp-2);
+  align-items: center;
+  gap: var(--sp-1);
   color: var(--text-muted);
 }
 
 .location svg {
   flex: none;
-  margin-block-start: 0.2em;
   color: var(--link);
 }
 
-/* The service list repeats the Services page; phones skip it */
-.servicesCol {
-  display: none;
-}
-
 .bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-3);
-  margin-block-start: var(--sp-8);
-  padding-block-start: var(--sp-4);
+  margin-block-start: var(--sp-6);
+  padding-block-start: var(--sp-3);
   border-block-start: 1px solid var(--border);
   color: var(--text-muted);
   font-size: var(--fs-xs);
 }
 
-@media (width < 48em) {
-  /* The header already has the language switch on phones */
-  .bottomSwitch {
-    display: none;
-  }
-
-  .inlineCol .title {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  .inlineCol .list {
-    flex-flow: row wrap;
-    gap: var(--sp-2) var(--sp-5);
-  }
-}
-
-@media (width >= 48em) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--sp-8);
-  }
-
-  .brand {
-    grid-column: 1 / -1;
-  }
-
-  .servicesCol {
-    display: block;
-  }
-}
-
 @media (width >= 64em) {
-  .grid {
-    grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
-  }
-
-  .brand {
-    grid-column: auto;
+  .top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-10);
   }
 }

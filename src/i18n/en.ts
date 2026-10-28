@@ -231,6 +231,8 @@ const en = {
     ],
     locationLabel: 'Location',
     location: 'Ramallah',
+    emailLabel: 'Email',
+    phoneLabel: 'Phone',
     form: {
       title: 'Project inquiry',
       name: 'Full name',
@@ -264,7 +266,6 @@ const en = {
     description:
       'Software development, IT consulting, custom software and computer equipment, from one technology partner.',
     navTitle: 'Company',
-    servicesTitle: 'Services',
     contactTitle: 'Get in touch',
     location: 'Ramallah',
     contactLink: 'Send us an inquiry',

@@ -1,4 +1,5 @@
-import { MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_PHONE_LINK } from '../../content/company';
 import { useLanguage } from '../../i18n/context';
 import { Seo } from '../../components/Seo/Seo';
 import { PageHero } from '../../components/PageHero/PageHero';
@@ -35,6 +36,24 @@ export function Contact() {
             </ol>
 
             <dl className={styles.details}>
+              <div>
+                <dt>{c.emailLabel}</dt>
+                <dd>
+                  <Mail size={18} aria-hidden="true" />
+                  <a href={`mailto:${COMPANY_EMAIL}`} dir="ltr" className={styles.contactLink}>
+                    {COMPANY_EMAIL}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt>{c.phoneLabel}</dt>
+                <dd>
+                  <Phone size={18} aria-hidden="true" />
+                  <a href={COMPANY_PHONE_LINK} dir="ltr" className={styles.contactLink}>
+                    {COMPANY_PHONE}
+                  </a>
+                </dd>
+              </div>
               <div>
                 <dt>{c.locationLabel}</dt>
                 <dd>

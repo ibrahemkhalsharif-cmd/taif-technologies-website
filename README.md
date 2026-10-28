@@ -78,7 +78,6 @@ first paint (index.html) and by `LanguageProvider`.
 
 The brand materials do not include these, so the site does not show them. Please provide:
 
-- Phone number and email address (the brand templates only have placeholders)
 - A street address, if one should be shown (the site shows only "Ramallah", per review feedback)
 - Social media links
 - The public domain (set `VITE_SITE_URL` to enable canonical and hreflang links, then add a

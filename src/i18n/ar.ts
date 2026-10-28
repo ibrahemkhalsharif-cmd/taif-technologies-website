@@ -224,6 +224,8 @@ const ar: Dictionary = {
     ],
     locationLabel: 'الموقع',
     location: 'رام الله',
+    emailLabel: 'البريد الإلكتروني',
+    phoneLabel: 'الهاتف',
     form: {
       title: 'استفسار عن مشروع',
       name: 'الاسم الكامل',
@@ -257,7 +259,6 @@ const ar: Dictionary = {
     description:
       'تطوير البرمجيات، والاستشارات التقنية، والبرمجيات حسب الطلب، والحواسيب ومعداتها، من شريك تقني واحد.',
     navTitle: 'الشركة',
-    servicesTitle: 'الخدمات',
     contactTitle: 'تواصل',
     location: 'رام الله',
     contactLink: 'أرسل لنا استفساراً',
