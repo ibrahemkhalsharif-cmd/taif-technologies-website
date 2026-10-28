@@ -25,8 +25,8 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--white);
-  color: var(--navy);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: var(--fs-md);
   font-weight: var(--fw-regular);
@@ -104,9 +104,13 @@ button {
   color: var(--white);
 }
 
+body,
 [data-tone] {
   background: var(--bg);
   color: var(--text);
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
 /* Layout helpers */

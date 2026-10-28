@@ -1,4 +1,6 @@
 import mark from '../../assets/logos/taif-mark.svg';
+import markReverse from '../../assets/logos/taif-mark-reverse.svg';
+import { useTheme } from '../../theme/context';
 import { useLanguage } from '../../i18n/context';
 import { withBrand } from '../../i18n/withBrand';
 import { Seo } from '../../components/Seo/Seo';
@@ -14,6 +16,7 @@ const MARK_PARTS = ['stem', 'teal', 'orange'] as const;
 
 export function About() {
   const { t, path } = useLanguage();
+  const { theme } = useTheme();
   const a = t.about;
 
   return (
@@ -35,7 +38,13 @@ export function About() {
           </div>
 
           <div className={styles.markPanel} data-tone="cream">
-            <img src={mark} alt={a.markAlt} width={96} height={96} className={styles.mark} />
+            <img
+              src={theme === 'dark' ? markReverse : mark}
+              alt={a.markAlt}
+              width={96}
+              height={96}
+              className={styles.mark}
+            />
             <div className={styles.markCaption}>
               <h3 className={styles.markTitle}>{a.markTitle}</h3>
               <p className={styles.markLead}>{a.markLead}</p>

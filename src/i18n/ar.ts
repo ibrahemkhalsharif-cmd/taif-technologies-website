@@ -44,6 +44,8 @@ const ar: Dictionary = {
     switchLabel: 'English',
     switchLang: 'en',
     switchAria: 'View the site in English',
+    themeToDark: 'التبديل إلى الوضع الداكن',
+    themeToLight: 'التبديل إلى الوضع الفاتح',
   },
 
   serviceNames: {
@@ -220,8 +222,8 @@ const ar: Dictionary = {
       'نقرأ رسالتك، وقد نسألك بعض الأسئلة الإضافية.',
       'نقترح خطوة عملية تالية، مثل مكالمة أو مراجعة قصيرة.',
     ],
-    locationLabel: 'العنوان',
-    address: ['عمارة الأسعد، شارع بنك القاهرة عمان', 'رام الله، فلسطين'],
+    locationLabel: 'الموقع',
+    location: 'رام الله',
     form: {
       title: 'استفسار عن مشروع',
       name: 'الاسم الكامل',
@@ -246,7 +248,8 @@ const ar: Dictionary = {
       errorSummary: 'يرجى تصحيح الحقول المحددة.',
       success: 'شكراً لك. تم إرسال استفسارك، وسنعود إليك.',
       failure: 'تعذّر إرسال استفسارك. يرجى التحقق من الاتصال والمحاولة مرة أخرى.',
-      unavailable: 'الإرسال عبر الموقع غير مفعّل بعد، لذلك لم تُرسل هذه الرسالة. يرجى المحاولة لاحقاً.',
+      unavailable:
+        'الإرسال عبر الموقع غير مفعّل بعد، لذلك لم تُرسل هذه الرسالة. يرجى المحاولة لاحقاً.',
     },
   },
 
@@ -256,10 +259,9 @@ const ar: Dictionary = {
     navTitle: 'الشركة',
     servicesTitle: 'الخدمات',
     contactTitle: 'تواصل',
-    address: ['عمارة الأسعد، شارع بنك القاهرة عمان', 'رام الله، فلسطين'],
+    location: 'رام الله',
     contactLink: 'أرسل لنا استفساراً',
     rights: 'جميع الحقوق محفوظة.',
-    registration: 'رقم التسجيل',
   },
 
   notFound: {

@@ -1,0 +1,34 @@
+.toggle {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2.625rem;
+  block-size: 2.625rem;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text);
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.toggle:hover {
+  border-color: color-mix(in srgb, var(--text) 40%, transparent);
+  background: var(--tint);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  animation: swap 0.45s var(--ease) both;
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+    transform: rotate(-60deg) scale(0.6);
+  }
+}

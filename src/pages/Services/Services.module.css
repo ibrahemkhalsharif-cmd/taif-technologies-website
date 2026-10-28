@@ -61,7 +61,7 @@
   position: absolute;
   inset-block-start: clamp(1rem, -1rem + 4vw, 3rem);
   inset-inline-end: var(--gutter);
-  color: rgb(19 27 46 / 6%);
+  color: color-mix(in srgb, var(--text) 6%, transparent);
   font-family: var(--font-latin);
   font-size: clamp(7rem, 4rem + 12vw, 15rem);
   font-weight: var(--fw-bold);
@@ -75,7 +75,7 @@
   .bigNumber {
     color: transparent;
     /* stylelint-disable-next-line property-no-vendor-prefix */
-    -webkit-text-stroke: 1.5px rgb(19 27 46 / 12%);
+    -webkit-text-stroke: 1.5px color-mix(in srgb, var(--text) 14%, transparent);
   }
 }
 
@@ -103,7 +103,7 @@
   inline-size: 3.5rem;
   block-size: 3.5rem;
   border-radius: var(--r-md);
-  background: var(--navy);
+  background: var(--surface-strong);
   color: var(--svc);
 }
 

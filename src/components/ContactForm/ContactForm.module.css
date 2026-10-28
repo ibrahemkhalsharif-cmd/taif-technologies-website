@@ -39,8 +39,8 @@
   padding: var(--sp-3) var(--sp-4);
   border: 1.5px solid var(--control-border);
   border-radius: var(--r-md);
-  background: var(--white);
-  color: var(--navy);
+  background: var(--field-bg);
+  color: var(--text);
   line-height: 1.5;
   transition:
     border-color var(--dur-fast) var(--ease),
@@ -48,7 +48,7 @@
 }
 
 .control:hover {
-  border-color: var(--slate);
+  border-color: var(--text-muted);
 }
 
 .control:focus-visible {
@@ -60,7 +60,7 @@
 /* No red in the brand palette: invalid fields get a thicker navy border plus the message and icon */
 .control[aria-invalid='true'] {
   border-width: 2px;
-  border-color: var(--navy);
+  border-color: var(--text);
   border-inline-start: 6px solid var(--orange);
 }
 
@@ -91,7 +91,7 @@ input[dir='ltr'].control {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-end: var(--sp-4);
-  color: var(--slate);
+  color: var(--text-muted);
   pointer-events: none;
   transform: translateY(-50%);
 }
@@ -101,7 +101,7 @@ input[dir='ltr'].control {
   display: flex;
   align-items: flex-start;
   gap: var(--sp-2);
-  color: var(--navy);
+  color: var(--text);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
 }
@@ -117,7 +117,7 @@ input[dir='ltr'].control {
   padding: var(--sp-3) var(--sp-4);
   border-inline-start: 4px solid var(--orange);
   border-radius: var(--r-sm);
-  background: var(--cream);
+  background: var(--notice-bg);
 }
 
 .footer {
@@ -151,11 +151,11 @@ input[dir='ltr'].control {
 
 .warning {
   border-inline-start: 4px solid var(--orange);
-  background: var(--cream);
+  background: var(--notice-bg);
 }
 
 .warning svg {
-  color: var(--navy);
+  color: var(--text);
 }
 
 @media (width >= 40em) {

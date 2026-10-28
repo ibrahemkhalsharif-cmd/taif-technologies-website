@@ -43,6 +43,8 @@ const en = {
     switchLabel: 'العربية',
     switchLang: 'ar',
     switchAria: 'اعرض الموقع بالعربية',
+    themeToDark: 'Switch to dark theme',
+    themeToLight: 'Switch to light theme',
   },
 
   // Short labels for the hero visual
@@ -191,9 +193,13 @@ const en = {
       'That is how we work. Everything a business needs from technology, from software and advice to systems and equipment, comes together under one roof.',
     ],
     markTitle: 'The mark',
-    markLead: 'A lowercase t, the first letter of taif and technologies, drawn as one continuous line.',
+    markLead:
+      'A lowercase t, the first letter of taif and technologies, drawn as one continuous line.',
     markItems: [
-      { label: 'The stem', body: 'One continuous line ending in a soft curve: simplicity and ease.' },
+      {
+        label: 'The stem',
+        body: 'One continuous line ending in a soft curve: simplicity and ease.',
+      },
       { label: 'The green arm', body: 'Technology.' },
       { label: 'The orange dot', body: 'The spark of a new idea.' },
     ],
@@ -223,9 +229,8 @@ const en = {
       'We read your message and may ask a few follow-up questions.',
       'We suggest a practical next step, such as a call or a short review.',
     ],
-    locationLabel: 'Address',
-    // From the brand pack's letterhead and business card templates
-    address: ['Al-Asaad Building, Cairo Amman Bank Street', 'Ramallah, Palestine'],
+    locationLabel: 'Location',
+    location: 'Ramallah',
     form: {
       title: 'Project inquiry',
       name: 'Full name',
@@ -261,10 +266,9 @@ const en = {
     navTitle: 'Company',
     servicesTitle: 'Services',
     contactTitle: 'Get in touch',
-    address: ['Al-Asaad Building, Cairo Amman Bank Street', 'Ramallah, Palestine'],
+    location: 'Ramallah',
     contactLink: 'Send us an inquiry',
     rights: 'All rights reserved.',
-    registration: 'Reg. no.',
   },
 
   notFound: {

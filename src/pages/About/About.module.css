@@ -74,7 +74,7 @@
 }
 
 .markItem[data-part='stem'] {
-  --part: var(--navy);
+  --part: var(--text); /* the stem: navy in light mode, cream in dark */
 }
 
 .markItem[data-part='teal'] {

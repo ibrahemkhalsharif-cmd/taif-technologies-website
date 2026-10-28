@@ -58,11 +58,7 @@ export function Footer() {
             <ul role="list" className={styles.list}>
               <li className={styles.location}>
                 <MapPin size={18} aria-hidden="true" />
-                <address>
-                  {t.footer.address.map((line) => (
-                    <span key={line}>{line}</span>
-                  ))}
-                </address>
+                <span>{t.footer.location}</span>
               </li>
               <li>
                 <Link to={path('/contact')} className={styles.link}>
@@ -80,9 +76,6 @@ export function Footer() {
               Taif Technologies
             </span>
             . {t.footer.rights}
-          </p>
-          <p className={styles.registration}>
-            {t.footer.registration} <span dir="ltr">565053493</span>
           </p>
           <LanguageSwitch />
         </div>

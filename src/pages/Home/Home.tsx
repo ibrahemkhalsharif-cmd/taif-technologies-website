@@ -22,7 +22,12 @@ export function Home() {
     <>
       <Seo page="home" />
 
-      <section data-tone="navy" data-header-dark className={styles.hero} aria-labelledby="hero-title">
+      <section
+        data-tone="navy"
+        data-header-dark
+        className={styles.hero}
+        aria-labelledby="hero-title"
+      >
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroText}>
             <p className={styles.tagline} style={order(0)}>
@@ -35,7 +40,8 @@ export function Home() {
             <h1 id="hero-title" className={styles.heroTitle} style={order(1)}>
               <span className={styles.titleLead}>{t.hero.titleLead}</span>{' '}
               <span className={styles.titleAccent}>
-                {t.hero.titleAccent} <span className={styles.underlined}>{t.hero.titleAccentLast}</span>
+                {t.hero.titleAccent}{' '}
+                <span className={styles.underlined}>{t.hero.titleAccentLast}</span>
               </span>
             </h1>
             <p className={styles.heroLead} style={order(2)}>

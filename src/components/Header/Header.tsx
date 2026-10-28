@@ -5,6 +5,8 @@ import { useLanguage } from '../../i18n/context';
 import { Logo } from '../Logo/Logo';
 import { ButtonLink } from '../Button/Button';
 import { LanguageSwitch } from '../LanguageSwitch/LanguageSwitch';
+import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
+import { useTheme } from '../../theme/context';
 import { MobileMenu } from './MobileMenu';
 import { NAV_LINKS } from './navLinks';
 import styles from './Header.module.css';
@@ -52,7 +54,10 @@ export function Header() {
   const menuButton = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const surface = useHeaderSurface(headerRef);
+  const { theme } = useTheme();
   const dark = surface.dark && !open;
+  // Reverse logo on any dark surface: over a navy opening, or everywhere in the dark theme
+  const reverseLogo = dark || theme === 'dark';
 
   const close = useCallback((returnFocus = false) => {
     setOpen(false);
@@ -89,7 +94,7 @@ export function Header() {
     >
       <div className={`container ${styles.inner}`}>
         <Link to={path('/')} className={styles.logoLink} onClick={() => close()}>
-          <Logo width={120} variant={dark ? 'reverse' : 'default'} />
+          <Logo width={120} variant={reverseLogo ? 'reverse' : 'default'} />
         </Link>
 
         <nav aria-label={t.nav.label} className={styles.nav}>
@@ -111,13 +116,9 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <ThemeToggle />
           <LanguageSwitch onSwitch={() => close()} />
-          <ButtonLink
-            to={path('/contact')}
-            size="sm"
-            variant={dark ? 'light' : 'primary'}
-            className={styles.cta}
-          >
+          <ButtonLink to={path('/contact')} size="sm" className={styles.cta}>
             {t.nav.cta}
           </ButtonLink>
           <button

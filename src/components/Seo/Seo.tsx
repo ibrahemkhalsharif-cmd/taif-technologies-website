@@ -24,8 +24,16 @@ export function Seo({ page, noIndex }: { page: keyof Dictionary['meta']; noIndex
       {SITE_URL && (
         <>
           <link rel="canonical" href={SITE_URL + pathname} />
-          <link rel="alternate" hrefLang="ar" href={SITE_URL + switchLanguagePath(pathname, 'ar')} />
-          <link rel="alternate" hrefLang="en" href={SITE_URL + switchLanguagePath(pathname, 'en')} />
+          <link
+            rel="alternate"
+            hrefLang="ar"
+            href={SITE_URL + switchLanguagePath(pathname, 'ar')}
+          />
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href={SITE_URL + switchLanguagePath(pathname, 'en')}
+          />
           <link
             rel="alternate"
             hrefLang="x-default"

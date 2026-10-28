@@ -60,7 +60,9 @@ export function Services() {
             )}
             <span
               key={`n-${animKey}`}
-              className={[styles.bigNumber, arrives && styles.numberArrive].filter(Boolean).join(' ')}
+              className={[styles.bigNumber, arrives && styles.numberArrive]
+                .filter(Boolean)
+                .join(' ')}
               aria-hidden="true"
             >
               {String(i + 1).padStart(2, '0')}

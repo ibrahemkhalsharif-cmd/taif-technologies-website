@@ -4,14 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#131B2E" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
     <title>Taif Technologies</title>
     <script>
-      // Set language and direction before first paint so the layout never flips after load.
+      // Set language, direction and theme before first paint so nothing flips or flashes after load.
       (function () {
         var en = /^\/en(\/|$)/.test(location.pathname);
         document.documentElement.lang = en ? 'en' : 'ar';
         document.documentElement.dir = en ? 'ltr' : 'rtl';
+
+        // Theme: the visitor's saved choice, otherwise the system setting (see ThemeProvider).
+        var theme = null;
+        try {
+          theme = localStorage.getItem('taif-theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
       })();
     </script>
   </head>

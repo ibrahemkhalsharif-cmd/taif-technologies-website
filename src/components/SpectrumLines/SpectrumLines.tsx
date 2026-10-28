@@ -6,7 +6,12 @@ import styles from './SpectrumLines.module.css';
 // short orange and teal accents. Mostly quiet cream lines, with the three service colours picked out.
 const delay = (i: number) => ({ '--i': i }) as CSSProperties;
 
-const ACCENTS: Record<number, string> = { 2: 'software', 4: 'consulting', 7: 'custom', 9: 'hardware' };
+const ACCENTS: Record<number, string> = {
+  2: 'software',
+  4: 'consulting',
+  7: 'custom',
+  9: 'hardware',
+};
 
 const HERO_LINES = Array.from({ length: 12 }, (_, i) => {
   const y = -90 + i * 70;
@@ -37,7 +42,14 @@ export function HeroLines() {
           <stop offset="0" stopColor="#fff" stopOpacity="0.12" />
           <stop offset="1" stopColor="#fff" stopOpacity="1" />
         </linearGradient>
-        <mask id="hero-lines-mask" maskUnits="userSpaceOnUse" x="-1200" y="-300" width="1900" height="1200">
+        <mask
+          id="hero-lines-mask"
+          maskUnits="userSpaceOnUse"
+          x="-1200"
+          y="-300"
+          width="1900"
+          height="1200"
+        >
           <rect x="-1200" y="-300" width="1900" height="1200" fill="url(#hero-lines-fade)" />
         </mask>
       </defs>

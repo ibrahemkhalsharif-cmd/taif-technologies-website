@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Layout } from './components/Layout/Layout';
+import { ThemeProvider } from './theme/ThemeProvider';
 import { Home } from './pages/Home/Home';
 import { About } from './pages/About/About';
 import { Services } from './pages/Services/Services';
@@ -19,15 +20,17 @@ const pages = (
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/en" element={<Layout lang="en" />}>
-          {pages}
-        </Route>
-        <Route path="/" element={<Layout lang="ar" />}>
-          {pages}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/en" element={<Layout lang="en" />}>
+            {pages}
+          </Route>
+          <Route path="/" element={<Layout lang="ar" />}>
+            {pages}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

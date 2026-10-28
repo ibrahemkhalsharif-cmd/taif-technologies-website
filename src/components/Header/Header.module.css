@@ -16,7 +16,9 @@
 
 .header[data-scrolled] {
   border-color: transparent;
-  box-shadow: 0 1px 0 var(--border), 0 10px 30px -18px rgb(19 27 46 / 35%);
+  box-shadow:
+    0 1px 0 var(--border),
+    0 10px 30px -18px var(--shadow);
 }
 
 .inner {
@@ -102,6 +104,32 @@
 
 .menuButton:hover {
   background: var(--tint);
+}
+
+/* Small phones: logo, theme, language and menu must share ~343px */
+@media (width < 30em) {
+  .inner {
+    gap: var(--sp-3);
+  }
+
+  .actions {
+    gap: var(--sp-2);
+  }
+
+  .actions :global(.lang-icon) {
+    display: none;
+  }
+}
+
+/* Very small phones (320px): the language switch shows only its icon; its aria-label still names it */
+@media (width < 23em) {
+  .actions :global(.lang-icon) {
+    display: block;
+  }
+
+  .actions :global(.lang-label) {
+    display: none;
+  }
 }
 
 @media (width >= 48em) {

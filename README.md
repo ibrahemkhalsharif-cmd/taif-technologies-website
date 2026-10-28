@@ -79,8 +79,7 @@ first paint (index.html) and by `LanguageProvider`.
 The brand materials do not include these, so the site does not show them. Please provide:
 
 - Phone number and email address (the brand templates only have placeholders)
-- Confirmation of the street address. "Al-Asaad Building, Cairo Amman Bank Street, Ramallah" is taken
-  from the letterhead and business-card templates in brand pack v1.0.
+- A street address, if one should be shown (the site shows only "Ramallah", per review feedback)
 - Social media links
 - The public domain (set `VITE_SITE_URL` to enable canonical and hreflang links, then add a
   `sitemap.xml`)

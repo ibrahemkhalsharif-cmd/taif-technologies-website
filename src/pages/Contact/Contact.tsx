@@ -39,11 +39,7 @@ export function Contact() {
                 <dt>{c.locationLabel}</dt>
                 <dd>
                   <MapPin size={18} aria-hidden="true" />
-                  <address>
-                    {c.address.map((line) => (
-                      <span key={line}>{line}</span>
-                    ))}
-                  </address>
+                  {c.location}
                 </dd>
               </div>
             </dl>

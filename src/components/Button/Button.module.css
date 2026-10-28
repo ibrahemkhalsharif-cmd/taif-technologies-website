@@ -28,14 +28,14 @@
   padding-inline: var(--sp-4);
 }
 
-/* Navy with cream text: 15:1 */
+/* Navy with cream text (15:1); flips to cream with navy text on navy surfaces and in dark mode */
 .primary {
-  background: var(--navy);
-  color: var(--cream);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
 }
 
 .primary:hover {
-  background: var(--navy-2);
+  background: var(--btn-bg-hover);
 }
 
 /* Teal with white text: 4.9:1 */

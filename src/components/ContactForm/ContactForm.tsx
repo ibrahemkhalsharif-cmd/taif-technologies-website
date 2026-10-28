@@ -76,7 +76,13 @@ export function ContactForm() {
   const hasErrors = Object.keys(errors).length > 0;
 
   return (
-    <form ref={formRef} className={styles.form} noValidate onSubmit={onSubmit} aria-labelledby="form-title">
+    <form
+      ref={formRef}
+      className={styles.form}
+      noValidate
+      onSubmit={onSubmit}
+      aria-labelledby="form-title"
+    >
       <h2 id="form-title" className={styles.title}>
         {f.title}
       </h2>
@@ -91,7 +97,13 @@ export function ContactForm() {
       <div className={styles.grid}>
         <Field name="name" label={f.name} error={errors.name && f.errors[errors.name]}>
           {(props) => (
-            <input {...props} type="text" autoComplete="name" value={values.name} onChange={update} />
+            <input
+              {...props}
+              type="text"
+              autoComplete="name"
+              value={values.name}
+              onChange={update}
+            />
           )}
         </Field>
 

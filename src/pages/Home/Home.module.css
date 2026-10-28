@@ -219,7 +219,7 @@
   padding-block: clamp(1.5rem, 1rem + 1.5vw, 2.25rem);
   padding-inline: var(--sp-2);
   border-block-start: 1px solid var(--border);
-  color: var(--navy);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -229,7 +229,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: color-mix(in srgb, var(--svc) 9%, var(--white));
+  background: color-mix(in srgb, var(--svc) 9%, var(--bg));
   transform: scaleX(0);
   transform-origin: var(--start);
   transition: transform 0.55s var(--ease);
@@ -259,7 +259,7 @@
   grid-area: num;
   align-self: start;
   padding-block-start: 0.55em;
-  color: var(--slate);
+  color: var(--text-muted);
   font-family: var(--font-latin);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
@@ -272,6 +272,7 @@
 .rowTitle {
   grid-area: title;
   font-size: var(--fs-2xl);
+  overflow-wrap: break-word;
   font-weight: var(--fw-bold);
   line-height: var(--lh-heading);
   letter-spacing: var(--tracking-heading);
@@ -300,9 +301,9 @@
 
 .row:hover .rowArrow,
 .row:focus-visible .rowArrow {
-  border-color: var(--navy);
-  background: var(--navy);
-  color: var(--cream);
+  border-color: var(--btn-bg);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
 }
 
 .row:hover .rowTitle {
@@ -352,8 +353,11 @@
   @media (prefers-reduced-motion: no-preference) {
     .statementFill {
       background-image:
-        linear-gradient(var(--navy), var(--navy)),
-        linear-gradient(rgb(19 27 46 / 16%), rgb(19 27 46 / 16%));
+        linear-gradient(var(--text), var(--text)),
+        linear-gradient(
+          color-mix(in srgb, var(--text) 16%, transparent),
+          color-mix(in srgb, var(--text) 16%, transparent)
+        );
       background-position: var(--start) top;
       background-repeat: no-repeat;
       background-size:
@@ -378,6 +382,13 @@
 
 /* ---------- Layout breakpoints ---------- */
 
+/* Very small phones: long words like "development" must fit beside the number and arrow */
+@media (width < 23em) {
+  .rowTitle {
+    font-size: var(--fs-xl);
+  }
+}
+
 @media (width >= 48em) {
   .heroArt {
     inline-size: min(100%, 32rem);
@@ -401,7 +412,7 @@
     inline-size: 3.5rem;
     block-size: 3.5rem;
     border-radius: var(--r-md);
-    background: var(--navy);
+    background: var(--surface-strong);
     color: var(--svc);
   }
 }

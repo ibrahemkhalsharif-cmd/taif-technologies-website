@@ -78,18 +78,6 @@
   /* Direction helpers: --dir flips transforms, --start is the physical start edge */
   --dir: 1;
   --start: left;
-
-  /* Semantic tokens (white surface is the default context) */
-  --bg: var(--white);
-  --text: var(--navy);
-  --text-muted: var(--slate);
-  --link: var(--teal);
-  --border: rgb(19 27 46 / 12%);
-  --control-border: var(--gray);
-  --focus-ring: var(--teal);
-  --accent: var(--orange);
-  --tint: color-mix(in srgb, var(--teal) 10%, var(--white));
-  --outline-border: color-mix(in srgb, var(--cream) 80%, var(--gray));
 }
 
 [dir='rtl'] {
@@ -127,15 +115,26 @@
 /*
  * Surface contexts. Any element with data-tone resets the semantic tokens,
  * so everything inside stays readable (contrast values in README).
+ * The page itself (html) uses the white tone; [data-theme='dark'] below swaps it.
  */
+:root,
 [data-tone='white'] {
   --bg: var(--white);
   --text: var(--navy);
   --text-muted: var(--slate);
   --link: var(--teal);
   --border: rgb(19 27 46 / 12%);
+  --control-border: var(--gray);
+  --outline-border: color-mix(in srgb, var(--cream) 80%, var(--gray));
   --focus-ring: var(--teal);
   --tint: color-mix(in srgb, var(--teal) 10%, var(--white));
+  --surface-strong: var(--navy); /* icon tiles, number circles, contact panel */
+  --field-bg: var(--white);
+  --notice-bg: var(--cream);
+  --btn-bg: var(--navy);
+  --btn-fg: var(--cream);
+  --btn-bg-hover: var(--navy-2);
+  --shadow: rgb(19 27 46 / 35%);
 }
 
 [data-tone='cream'] {
@@ -148,7 +147,11 @@
   --tint: color-mix(in srgb, var(--teal) 12%, var(--cream));
 }
 
-[data-tone='navy'] {
+/* Navy sections, and every surface in the dark theme */
+[data-tone='navy'],
+[data-theme='dark'],
+[data-theme='dark'] [data-tone='white'],
+[data-theme='dark'] [data-tone='cream'] {
   --bg: var(--navy);
   --text: var(--cream);
   --text-muted: color-mix(in srgb, var(--cream) 76%, var(--navy));
@@ -158,4 +161,25 @@
   --outline-border: rgb(244 239 230 / 35%);
   --focus-ring: var(--teal-light);
   --tint: var(--navy-2);
+  --surface-strong: var(--navy-2);
+  --field-bg: var(--navy-2);
+  --notice-bg: var(--navy-2);
+  --btn-bg: var(--cream);
+  --btn-fg: var(--navy);
+  --btn-bg-hover: var(--white);
+  --shadow: rgb(0 0 0 / 45%);
+}
+
+/* Dark theme: cream sections become the second navy so sections still alternate */
+[data-theme='dark'] [data-tone='cream'] {
+  --bg: var(--navy-2);
+  --tint: var(--navy);
+  --surface-strong: var(--navy);
+  --field-bg: var(--navy);
+  --notice-bg: var(--navy);
+  --text-muted: color-mix(in srgb, var(--cream) 78%, var(--navy-2));
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
 }

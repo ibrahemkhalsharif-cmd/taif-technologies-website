@@ -4,7 +4,7 @@
   z-index: var(--z-menu);
   overflow-y: auto;
   padding-block: var(--sp-6) var(--sp-10);
-  background: var(--white);
+  background: var(--bg);
   animation: sheet-in var(--dur) var(--ease);
 }
 
@@ -18,7 +18,7 @@
   gap: var(--sp-3);
   min-block-size: 3.5rem;
   border-block-end: 1px solid var(--border);
-  color: var(--navy);
+  color: var(--text);
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
   text-decoration: none;
@@ -38,7 +38,7 @@
 
 .tagline {
   margin-block-start: var(--sp-8);
-  color: var(--slate);
+  color: var(--text-muted);
   font-size: var(--fs-sm);
 }
 
