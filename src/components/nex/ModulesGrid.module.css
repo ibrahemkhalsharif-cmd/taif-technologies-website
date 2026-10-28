@@ -1,0 +1,77 @@
+.grid {
+  display: grid;
+  gap: var(--sp-4);
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition:
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.item:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+/* Operations and real estate: the core of NEX ERP */
+.item[data-core] {
+  border-color: transparent;
+  background: var(--surface-strong);
+  color: var(--cream);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  margin-block-end: var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--tint);
+  color: var(--link);
+  transition: transform 0.45s var(--ease);
+}
+
+.item[data-core] .icon {
+  background: color-mix(in srgb, var(--cream) 10%, transparent);
+  color: var(--teal-light);
+}
+
+.item:hover .icon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.name {
+  font-size: var(--fs-lg);
+}
+
+.body {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.item[data-core] .body {
+  color: color-mix(in srgb, var(--cream) 78%, var(--navy));
+}
+
+@media (width >= 48em) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64em) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

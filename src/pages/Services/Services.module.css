@@ -332,3 +332,7 @@
     transform: translateY(-14px);
   }
 }
+
+.processHead {
+  margin-block-end: clamp(3rem, 2rem + 3vw, 4.5rem);
+}

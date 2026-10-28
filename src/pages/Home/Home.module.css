@@ -316,43 +316,73 @@
   transform: translateX(calc(8px * var(--dir)));
 }
 
-/* ---------- Promise ---------- */
+/* ---------- Shared section head ---------- */
 
-.promiseEyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-3);
-  margin-block-end: var(--sp-6);
-  color: var(--text-muted);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+.head {
+  margin-block-end: clamp(2.5rem, 1.5rem + 3vw, 4rem);
 }
 
-.promiseEyebrow::before {
-  content: '';
-  inline-size: 1.5rem;
-  block-size: 4px;
-  border-radius: var(--r-full);
-  background: var(--teal);
+/* ---------- The problem ---------- */
+
+.problemGrid {
+  display: grid;
+  gap: var(--sp-4);
+  margin: 0;
 }
 
-.statement {
-  max-inline-size: 22ch;
-  font-size: var(--fs-display);
-  font-weight: var(--fw-display);
-  line-height: var(--lh-display);
-  letter-spacing: var(--tracking-display);
+.problemCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-6);
+  border: 1px solid var(--border);
+  border-block-start: 3px solid var(--orange);
+  border-radius: var(--r-md);
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
-.promiseBody {
-  max-inline-size: 38rem;
-  margin-block: var(--sp-8) clamp(3.5rem, 2rem + 5vw, 6rem);
-  color: var(--text-muted);
+.problemCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.toolIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  margin-block-end: var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--tint);
+  color: var(--text);
+  transition: transform 0.45s var(--ease);
+}
+
+.problemCard:hover .toolIcon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.toolName {
   font-size: var(--fs-lg);
 }
 
+.pain {
+  color: var(--text-muted);
+}
+
+/* The answer fills in line by line as it scrolls through the viewport */
+.answer {
+  max-inline-size: 26ch;
+  margin-block-start: clamp(3rem, 2rem + 4vw, 5rem);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+}
+
 /*
- * The statement fills in, line by line, as it scrolls through the viewport.
  * Browsers without scroll-driven animations (or with reduced motion) show it fully.
  */
 @supports (animation-timeline: view()) {
@@ -380,10 +410,186 @@
   }
 }
 
-/* ---------- Process ---------- */
+/* ---------- Previews ---------- */
 
-.processHead {
-  margin-block-end: clamp(3rem, 2rem + 3vw, 4.5rem);
+.previewsSection {
+  overflow: hidden;
+}
+
+/* ---------- Audience ---------- */
+
+.segments {
+  display: grid;
+  gap: var(--sp-4);
+  margin: 0;
+}
+
+.segment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+/* Accent bar growing from the start edge on hover */
+.segment::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 0;
+  block-size: 4px;
+  background: var(--svc);
+  transform: scaleX(0.25);
+  transform-origin: var(--start);
+  transition: transform 0.6s var(--ease);
+}
+
+.segment:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.segment:hover::before {
+  transform: scaleX(1);
+}
+
+.segmentIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 3.25rem;
+  block-size: 3.25rem;
+  margin-block-end: var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--surface-strong);
+  color: var(--svc);
+}
+
+.segmentTitle {
+  font-size: var(--fs-lg);
+}
+
+.sectors {
+  display: grid;
+  gap: var(--sp-6);
+  margin-block-start: var(--sp-10);
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-radius: var(--r-lg);
+  background: var(--tint);
+}
+
+.sectorsTitle {
+  margin-block-end: var(--sp-2);
+  font-size: var(--fs-xl);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-block-size: 3rem;
+  padding-inline: var(--sp-5) var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition:
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.chipTag {
+  padding: 0.15rem var(--sp-3);
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+}
+
+.chipTag[data-kind='tested'] {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.chipTag[data-kind='setup'] {
+  border: 1px dashed var(--text-muted);
+  color: var(--text-muted);
+}
+
+/* ---------- Real estate ---------- */
+
+.realEstate {
+  display: grid;
+  gap: var(--sp-10);
+  align-items: center;
+}
+
+.realEstate > :global(.stagger) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-6);
+}
+
+.reBody {
+  max-inline-size: 36rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+/* ---------- Why ---------- */
+
+.why {
+  display: grid;
+  gap: var(--sp-8) var(--sp-10);
+  margin: 0;
+}
+
+.whyItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-1) var(--sp-3);
+  align-content: start;
+}
+
+.whyIcon {
+  grid-row: span 2;
+  margin-block-start: 0.15em;
+  color: var(--teal);
+  transition: transform 0.45s var(--ease);
+}
+
+.whyItem:hover .whyIcon {
+  transform: scale(1.25) rotate(-10deg);
+}
+
+.whyMessage {
+  font-size: var(--fs-lg);
+}
+
+/* ---------- Other services ---------- */
+
+.otherLink {
+  margin-block-start: var(--sp-8);
 }
 
 /* ---------- Layout breakpoints ---------- */
@@ -423,7 +629,37 @@
   }
 }
 
+@media (width >= 48em) {
+  .problemGrid,
+  .segments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .why {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (width >= 64em) {
+  .problemGrid,
+  .segments {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .why {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sectors {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    align-items: center;
+  }
+
+  .realEstate {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: var(--sp-16);
+  }
+
   .heroInner {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
     gap: var(--sp-8);

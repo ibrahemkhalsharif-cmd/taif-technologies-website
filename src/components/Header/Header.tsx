@@ -118,7 +118,7 @@ export function Header() {
         <div className={styles.actions}>
           <ThemeToggle />
           <LanguageSwitch onSwitch={() => close()} />
-          <ButtonLink to={path('/contact')} size="sm" className={styles.cta}>
+          <ButtonLink to={`${path('/contact')}?service=nex`} size="sm" className={styles.cta}>
             {t.nav.cta}
           </ButtonLink>
           <button

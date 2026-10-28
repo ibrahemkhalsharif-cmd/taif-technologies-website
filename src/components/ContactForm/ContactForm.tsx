@@ -2,7 +2,7 @@ import { useId, useRef, useState, type ChangeEvent, type FormEvent, type ReactNo
 import { useSearchParams } from 'react-router';
 import { AlertCircle, CheckCircle2, ChevronDown, Info } from 'lucide-react';
 import { useLanguage } from '../../i18n/context';
-import { SERVICE_IDS, isServiceId } from '../../content/services';
+import { SERVICE_IDS, isContactOption } from '../../content/services';
 import { Button } from '../Button/Button';
 import { validate, type ContactErrors, type ContactValues } from './validate';
 import styles from './ContactForm.module.css';
@@ -23,7 +23,7 @@ export function ContactForm() {
     name: '',
     email: '',
     company: '',
-    service: isServiceId(requested) ? requested : '',
+    service: isContactOption(requested) ? requested : '',
     message: '',
   };
   const [values, setValues] = useState<ContactValues>(empty);
@@ -140,6 +140,7 @@ export function ContactForm() {
                 <option value="" disabled>
                   {f.servicePlaceholder}
                 </option>
+                <option value="nex">{f.serviceNex}</option>
                 {SERVICE_IDS.map((id) => (
                   <option key={id} value={id}>
                     {t.services[id].title}

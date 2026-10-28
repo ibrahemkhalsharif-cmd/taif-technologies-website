@@ -1,12 +1,19 @@
 // English copy. "{brand}" is replaced with the Taif Technologies name (see withBrand).
 // Everything here must stay within what the brand guide documents: no invented clients, numbers or history.
 
+import nexEn from './nex.en';
+
 const en = {
   meta: {
     home: {
-      title: 'Taif Technologies — The full spectrum of software',
+      title: 'NEX ERP by Taif Technologies — one system from offer to maintenance',
       description:
-        'Software development, IT consulting, custom software and computer equipment from one technology partner in Ramallah, Palestine.',
+        'NEX ERP is a cloud, Arabic-first ERP that runs quotations, contracts, installation, maintenance, invoicing and accounting in one place, in Arabic and English.',
+    },
+    nex: {
+      title: 'NEX ERP — Taif Technologies',
+      description:
+        'Operations, maintenance, real estate and finance in one cloud ERP: operation lines, contracts, tickets, occupancy board and project profit.',
     },
     about: {
       title: 'About — Taif Technologies',
@@ -34,10 +41,11 @@ const en = {
     label: 'Main',
     skip: 'Skip to content',
     home: 'Home',
+    nex: 'NEX ERP',
     about: 'About',
     services: 'Services',
     contact: 'Contact',
-    cta: 'Start a project',
+    cta: 'Request a demo',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     switchLabel: 'العربية',
@@ -186,7 +194,7 @@ const en = {
   about: {
     eyebrow: 'About',
     title: 'A technology partner that sees the whole picture.',
-    lead: '{brand} is a software company in Ramallah, Palestine. We work in software development, IT consulting, custom software and the supply of computers and their equipment.',
+    lead: '{brand} is a software company in Ramallah, Palestine. We build NEX ERP, a cloud ERP for companies that install, maintain and rent, and we also work in software development, IT consulting, custom software and computer equipment.',
     nameTitle: 'Why “Taif”?',
     nameBody: [
       'Taif (طيف) means spectrum: every colour carried in a single beam.',
@@ -230,6 +238,7 @@ const en = {
       service: 'Service of interest',
       servicePlaceholder: 'Choose a service',
       serviceUnsure: 'Not sure yet',
+      serviceNex: 'NEX ERP demo',
       message: 'Project details',
       messageHint: 'What are you trying to do, and what is getting in the way?',
       submit: 'Send inquiry',
@@ -250,9 +259,11 @@ const en = {
     },
   },
 
+  nex: nexEn,
+
   footer: {
     description:
-      'Software development, IT consulting, custom software and computer equipment, from one technology partner.',
+      'NEX ERP, the cloud ERP from offer to maintenance, plus software development, IT consulting, custom software and computer equipment.',
     navTitle: 'Company',
     servicesTitle: 'Services',
     contactTitle: 'Get in touch',

@@ -4,7 +4,8 @@ import { useLanguage } from '../../i18n/context';
 import { SERVICE_IDS, SERVICE_ICONS } from '../../content/services';
 import { Seo } from '../../components/Seo/Seo';
 import { PageHero } from '../../components/PageHero/PageHero';
-import { Section } from '../../components/Section/Section';
+import { Section, SectionHeader } from '../../components/Section/Section';
+import { ProcessSteps } from '../../components/ProcessSteps/ProcessSteps';
 import { ButtonLink } from '../../components/Button/Button';
 import { CtaBand } from '../../components/CtaBand/CtaBand';
 import styles from './Services.module.css';
@@ -109,6 +110,18 @@ export function Services() {
           </Section>
         );
       })}
+
+      <Section labelledBy="process-title">
+        <div className={styles.processHead}>
+          <SectionHeader
+            titleId="process-title"
+            eyebrow={t.process.eyebrow}
+            title={t.process.title}
+            lead={t.process.lead}
+          />
+        </div>
+        <ProcessSteps />
+      </Section>
 
       <CtaBand />
     </>

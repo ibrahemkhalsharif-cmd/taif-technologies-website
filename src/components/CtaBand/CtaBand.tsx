@@ -4,9 +4,11 @@ import { ButtonLink } from '../Button/Button';
 import { BandLines } from '../SpectrumLines/SpectrumLines';
 import styles from './CtaBand.module.css';
 
-/** Closing call to action, shared by every page. */
-export function CtaBand() {
+/** Closing call to action, shared by every page. `nex` switches it to the NEX ERP demo request. */
+export function CtaBand({ nex = false }: { nex?: boolean }) {
   const { t, path } = useLanguage();
+  const copy = nex ? t.nex.cta : t.cta;
+  const to = nex ? `${path('/contact')}?service=nex` : path('/contact');
   const ref = useReveal<HTMLDivElement>();
   return (
     <section data-tone="navy" aria-labelledby="cta-title" className={styles.band}>
@@ -17,11 +19,11 @@ export function CtaBand() {
           <span />
         </div>
         <h2 id="cta-title" className={styles.title}>
-          {t.cta.title}
+          {copy.title}
         </h2>
-        <p className={styles.body}>{t.cta.body}</p>
-        <ButtonLink to={path('/contact')} variant="light" arrow className={styles.button}>
-          {t.cta.button}
+        <p className={styles.body}>{copy.body}</p>
+        <ButtonLink to={to} variant="light" arrow className={styles.button}>
+          {copy.button}
         </ButtonLink>
       </div>
     </section>

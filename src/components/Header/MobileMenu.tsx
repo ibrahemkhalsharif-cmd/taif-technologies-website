@@ -33,7 +33,12 @@ export function MobileMenu({ id, onNavigate }: { id: string; onNavigate: () => v
             </li>
           ))}
         </ul>
-        <ButtonLink to={path('/contact')} arrow className={styles.cta} onClick={onNavigate}>
+        <ButtonLink
+          to={`${path('/contact')}?service=nex`}
+          arrow
+          className={styles.cta}
+          onClick={onNavigate}
+        >
           {t.nav.cta}
         </ButtonLink>
         <p className={styles.tagline}>{t.tagline}</p>

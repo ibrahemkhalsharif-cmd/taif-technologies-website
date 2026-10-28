@@ -13,3 +13,8 @@ export const SERVICE_ICONS: Record<ServiceId, LucideIcon> = {
 export function isServiceId(value: string | null): value is ServiceId {
   return SERVICE_IDS.includes(value as ServiceId);
 }
+
+/** Values the contact form accepts in ?service=: a NEX ERP demo or one of the services. */
+export function isContactOption(value: string | null): value is ServiceId | 'nex' {
+  return value === 'nex' || isServiceId(value);
+}

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import { Layout } from './components/Layout/Layout';
 import { ThemeProvider } from './theme/ThemeProvider';
 import { Home } from './pages/Home/Home';
+import { NexErp } from './pages/NexErp/NexErp';
 import { About } from './pages/About/About';
 import { Services } from './pages/Services/Services';
 import { Contact } from './pages/Contact/Contact';
@@ -11,6 +12,7 @@ import { NotFound } from './pages/NotFound/NotFound';
 const pages = (
   <>
     <Route index element={<Home />} />
+    <Route path="nex-erp" element={<NexErp />} />
     <Route path="about" element={<About />} />
     <Route path="services" element={<Services />} />
     <Route path="contact" element={<Contact />} />
