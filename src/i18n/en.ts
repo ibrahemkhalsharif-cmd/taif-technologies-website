@@ -192,18 +192,6 @@ const en = {
       'Taif (طيف) means spectrum: every colour carried in a single beam.',
       'That is how we work. Everything a business needs from technology, from software and advice to systems and equipment, comes together under one roof.',
     ],
-    markTitle: 'The mark',
-    markLead:
-      'A lowercase t, the first letter of taif and technologies, drawn as one continuous line.',
-    markItems: [
-      {
-        label: 'The stem',
-        body: 'One continuous line ending in a soft curve: simplicity and ease.',
-      },
-      { label: 'The green arm', body: 'Technology.' },
-      { label: 'The orange dot', body: 'The spark of a new idea.' },
-    ],
-    markAlt: 'The Taif Technologies mark',
     traitsEyebrow: 'Our character',
     traitsTitle: 'How we want working with us to feel.',
     promiseEyebrow: 'Our promise',

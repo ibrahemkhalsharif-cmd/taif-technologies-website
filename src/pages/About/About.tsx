@@ -1,6 +1,3 @@
-import mark from '../../assets/logos/taif-mark.svg';
-import markReverse from '../../assets/logos/taif-mark-reverse.svg';
-import { useTheme } from '../../theme/context';
 import { useLanguage } from '../../i18n/context';
 import { withBrand } from '../../i18n/withBrand';
 import { Seo } from '../../components/Seo/Seo';
@@ -12,11 +9,8 @@ import { CtaBand } from '../../components/CtaBand/CtaBand';
 import { MarkMotif } from '../../components/MarkMotif/MarkMotif';
 import styles from './About.module.css';
 
-const MARK_PARTS = ['stem', 'teal', 'orange'] as const;
-
 export function About() {
   const { t, path } = useLanguage();
-  const { theme } = useTheme();
   const a = t.about;
 
   return (
@@ -25,38 +19,16 @@ export function About() {
       <PageHero eyebrow={a.eyebrow} title={a.title} lead={withBrand(a.lead)} />
 
       <Section labelledBy="name-title">
-        <div className={styles.nameLayout}>
-          <div className={styles.nameText}>
-            <h2 id="name-title" className={styles.nameTitle}>
-              {a.nameTitle}
-            </h2>
+        <div className={`stagger ${styles.nameLayout}`}>
+          <h2 id="name-title" className={styles.nameTitle}>
+            {a.nameTitle}
+          </h2>
+          <div className={`stagger ${styles.nameText}`}>
             {a.nameBody.map((p) => (
               <p key={p} className={styles.paragraph}>
                 {p}
               </p>
             ))}
-          </div>
-
-          <div className={styles.markPanel} data-tone="cream">
-            <img
-              src={theme === 'dark' ? markReverse : mark}
-              alt={a.markAlt}
-              width={96}
-              height={96}
-              className={styles.mark}
-            />
-            <div className={styles.markCaption}>
-              <h3 className={styles.markTitle}>{a.markTitle}</h3>
-              <p className={styles.markLead}>{a.markLead}</p>
-            </div>
-            <dl className={styles.markList}>
-              {a.markItems.map((item, i) => (
-                <div key={item.label} className={styles.markItem} data-part={MARK_PARTS[i]}>
-                  <dt>{item.label}</dt>
-                  <dd>{item.body}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </Section>

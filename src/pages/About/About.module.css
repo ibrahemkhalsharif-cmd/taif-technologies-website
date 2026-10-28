@@ -11,7 +11,7 @@
 }
 
 .nameTitle {
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-3xl);
 }
 
 .paragraph {
@@ -21,77 +21,6 @@
 
 .paragraph:first-of-type {
   color: var(--text);
-}
-
-.markPanel {
-  display: grid;
-  gap: var(--sp-6);
-  margin: 0;
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  border-radius: var(--r-lg);
-}
-
-.mark {
-  inline-size: 5rem;
-}
-
-.markCaption {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-}
-
-.markTitle {
-  font-size: var(--fs-lg);
-}
-
-.markLead {
-  color: var(--text-muted);
-}
-
-.markList {
-  display: grid;
-  gap: var(--sp-4);
-  margin: 0;
-}
-
-.markItem {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: var(--sp-3);
-  align-items: baseline;
-}
-
-/* Colour key matching each part of the mark */
-.markItem::before {
-  content: '';
-  grid-row: span 2;
-  inline-size: 1.25rem;
-  block-size: 6px;
-  border-radius: var(--r-full);
-  background: var(--part);
-  transform: translateY(-0.2em);
-}
-
-.markItem[data-part='stem'] {
-  --part: var(--text); /* the stem: navy in light mode, cream in dark */
-}
-
-.markItem[data-part='teal'] {
-  --part: var(--teal);
-}
-
-.markItem[data-part='orange'] {
-  --part: var(--orange);
-}
-
-.markItem dt {
-  font-weight: var(--fw-medium);
-}
-
-.markItem dd {
-  margin: 0;
-  color: var(--text-muted);
 }
 
 .traitsHeader {
@@ -138,8 +67,8 @@
 
 @media (width >= 64em) {
   .nameLayout {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    align-items: center;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
     gap: var(--sp-16);
   }
 }
