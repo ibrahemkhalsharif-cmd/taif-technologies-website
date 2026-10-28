@@ -1,8 +1,9 @@
 import { Link } from 'react-router';
-import { MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { useLanguage } from '../../i18n/context';
 import { useReveal } from '../../hooks/useReveal';
 import { SERVICE_IDS } from '../../content/services';
+import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_PHONE_LINK } from '../../content/company';
 import { Logo } from '../Logo/Logo';
 import { NAV_LINKS } from '../Header/navLinks';
 import styles from './Footer.module.css';
@@ -65,6 +66,18 @@ export function Footer() {
               <li className={styles.location}>
                 <MapPin size={18} aria-hidden="true" />
                 <span>{t.footer.location}</span>
+              </li>
+              <li className={styles.location}>
+                <Phone size={18} aria-hidden="true" />
+                <a href={COMPANY_PHONE_LINK} dir="ltr" className={styles.link}>
+                  {COMPANY_PHONE}
+                </a>
+              </li>
+              <li className={styles.location}>
+                <Mail size={18} aria-hidden="true" />
+                <a href={`mailto:${COMPANY_EMAIL}`} dir="ltr" className={styles.link}>
+                  {COMPANY_EMAIL}
+                </a>
               </li>
               <li>
                 <Link to={path('/contact')} className={styles.link}>
