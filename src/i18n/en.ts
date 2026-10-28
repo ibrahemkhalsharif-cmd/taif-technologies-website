@@ -218,7 +218,7 @@ const en = {
       'We suggest a practical next step, such as a call or a short review.',
     ],
     locationLabel: 'Location',
-    location: 'Ramallah',
+    location: 'Palestine - Ramallah',
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     form: {
@@ -256,7 +256,7 @@ const en = {
     navTitle: 'Company',
     servicesTitle: 'Services',
     contactTitle: 'Get in touch',
-    location: 'Ramallah',
+    location: 'Palestine - Ramallah',
     contactLink: 'Send us an inquiry',
     rights: 'All rights reserved.',
   },

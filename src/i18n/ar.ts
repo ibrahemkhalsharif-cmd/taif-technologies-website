@@ -215,7 +215,7 @@ const ar: Dictionary = {
       'نقترح خطوة عملية تالية، مثل مكالمة أو مراجعة قصيرة.',
     ],
     locationLabel: 'الموقع',
-    location: 'رام الله',
+    location: 'فلسطين - رام الله',
     emailLabel: 'البريد الإلكتروني',
     phoneLabel: 'الهاتف',
     form: {
@@ -253,7 +253,7 @@ const ar: Dictionary = {
     navTitle: 'الشركة',
     servicesTitle: 'الخدمات',
     contactTitle: 'تواصل',
-    location: 'رام الله',
+    location: 'فلسطين - رام الله',
     contactLink: 'أرسل لنا استفساراً',
     rights: 'جميع الحقوق محفوظة.',
   },

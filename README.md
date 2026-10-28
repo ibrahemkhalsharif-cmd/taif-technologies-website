@@ -78,7 +78,7 @@ first paint (index.html) and by `LanguageProvider`.
 
 The brand materials do not include these, so the site does not show them. Please provide:
 
-- A street address, if one should be shown (the site shows only "Ramallah", per review feedback)
+- A street address, if one should be shown (the site shows "Palestine - Ramallah", per review feedback)
 - Social media links
 - The public domain (set `VITE_SITE_URL` to enable canonical and hreflang links, then add a
   `sitemap.xml`)
