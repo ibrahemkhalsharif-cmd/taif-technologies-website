@@ -97,6 +97,14 @@ success message.
 2. Copy `.env.example` to `.env` and set `VITE_CONTACT_ENDPOINT=<url>`.
 3. Rebuild. A 2xx response shows the success message; anything else shows a retry message.
 
+## Link previews (WhatsApp, Facebook, LinkedIn)
+
+`index.html` contains static Open Graph tags and `public/og-image.png` (1200×630, under 300 KB),
+because preview crawlers don't run JavaScript. Image URLs must be absolute; `vite.config.ts` fills
+`%SITE_URL%` from `VITE_SITE_URL`, else the host's production URL (Vercel / Netlify), else
+`https://taiftechnologies.cloud`. Set `VITE_SITE_URL` if the site lives on another address.
+WhatsApp caches previews per link, so links shared before this may keep the old card for a while.
+
 ## Deploying
 
 Any static host works. `public/_redirects` (Netlify) and `vercel.json` (Vercel) send every path to

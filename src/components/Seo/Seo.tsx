@@ -5,9 +5,12 @@ import { switchLanguagePath } from '../../i18n/paths';
 
 const SITE_URL = import.meta.env.VITE_SITE_URL?.replace(/\/$/, '');
 
-/** Per-page title and meta tags. React 19 hoists these into <head>. */
+/**
+ * Per-page title, description and links. React 19 hoists these into <head>.
+ * Link-preview (Open Graph) tags are static in index.html, because preview crawlers don't run JavaScript.
+ */
 export function Seo({ page, noIndex }: { page: keyof Dictionary['meta']; noIndex?: boolean }) {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const { pathname } = useLocation();
   const meta = t.meta[page];
 
@@ -15,11 +18,6 @@ export function Seo({ page, noIndex }: { page: keyof Dictionary['meta']; noIndex
     <>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Taif Technologies" />
-      <meta property="og:title" content={meta.title} />
-      <meta property="og:description" content={meta.description} />
-      <meta property="og:locale" content={lang === 'ar' ? 'ar_PS' : 'en_US'} />
       {noIndex && <meta name="robots" content="noindex" />}
       {SITE_URL && (
         <>
