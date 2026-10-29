@@ -7,3 +7,6 @@ dist
 # Local tooling and notes not part of the site
 .claude/
 campus-design-system.md
+
+# SMTP password lives only on the server, never in Git
+contact-config.php
