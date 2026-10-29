@@ -2,7 +2,7 @@ import { useId, useRef, useState, type ChangeEvent, type FormEvent, type ReactNo
 import { useSearchParams } from 'react-router';
 import { AlertCircle, CheckCircle2, ChevronDown, Info } from 'lucide-react';
 import { useLanguage } from '../../i18n/context';
-import { SERVICE_IDS, isContactOption } from '../../content/services';
+import { SERVICE_IDS, isContactOption, type ServiceId } from '../../content/services';
 import { Button } from '../Button/Button';
 import { validate, type ContactErrors, type ContactValues } from './validate';
 import styles from './ContactForm.module.css';
@@ -57,12 +57,20 @@ export function ContactForm() {
       return;
     }
 
+    // Send the service's name, as the visitor saw it in the list, not its id
+    const service =
+      values.service === 'nex'
+        ? f.serviceNex
+        : values.service === 'unsure'
+          ? f.serviceUnsure
+          : t.services[values.service as ServiceId].title;
+
     setStatus('sending');
     try {
       const response = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...values, language: lang }),
+        body: JSON.stringify({ ...values, service, language: lang }),
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       setStatus('success');
