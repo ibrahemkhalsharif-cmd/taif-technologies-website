@@ -2,6 +2,7 @@
 // Everything here must stay within what the brand guide documents: no invented clients, numbers or history.
 
 import nexEn from './nex.en';
+import sectorsEn from './sectors.en';
 
 const en = {
   meta: {
@@ -260,6 +261,7 @@ const en = {
   },
 
   nex: nexEn,
+  sectors: sectorsEn,
 
   footer: {
     description:

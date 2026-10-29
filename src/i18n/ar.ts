@@ -1,5 +1,6 @@
 import type { Dictionary } from './en';
 import nexAr from './nex.ar';
+import sectorsAr from './sectors.ar';
 
 // Arabic copy (default language). The brand name stays in English: "{brand}" → Taif Technologies.
 
@@ -256,6 +257,7 @@ const ar: Dictionary = {
   },
 
   nex: nexAr,
+  sectors: sectorsAr,
 
   footer: {
     description:

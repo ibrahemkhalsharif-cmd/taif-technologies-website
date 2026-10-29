@@ -220,6 +220,28 @@
   color: var(--text-muted);
 }
 
+.detailsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-block-start: auto;
+  color: var(--teal-light);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+}
+
+.detailsLink:hover {
+  text-decoration: underline;
+}
+
+.detailsLink svg {
+  transition: transform var(--dur) var(--ease);
+}
+
+.detailsLink:hover svg {
+  transform: translateX(calc(4px * var(--dir))) scaleX(var(--dir));
+}
+
 .lines {
   color: var(--teal-light);
   font-size: var(--fs-sm);

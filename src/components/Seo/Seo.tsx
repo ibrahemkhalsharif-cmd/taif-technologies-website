@@ -9,10 +9,21 @@ const SITE_URL = import.meta.env.VITE_SITE_URL?.replace(/\/$/, '');
  * Per-page title, description and links. React 19 hoists these into <head>.
  * Link-preview (Open Graph) tags are static in index.html, because preview crawlers don't run JavaScript.
  */
-export function Seo({ page, noIndex }: { page: keyof Dictionary['meta']; noIndex?: boolean }) {
+interface SeoProps {
+  page?: keyof Dictionary['meta'];
+  /** Explicit title and description, for pages without an entry in t.meta */
+  title?: string;
+  description?: string;
+  noIndex?: boolean;
+}
+
+export function Seo({ page = 'home', title, description, noIndex }: SeoProps) {
   const { t } = useLanguage();
   const { pathname } = useLocation();
-  const meta = t.meta[page];
+  const meta = {
+    title: title ?? t.meta[page].title,
+    description: description ?? t.meta[page].description,
+  };
 
   return (
     <>

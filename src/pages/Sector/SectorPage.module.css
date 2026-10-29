@@ -1,0 +1,251 @@
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  animation: rise 0.8s var(--ease) 0.3s both;
+}
+
+.head {
+  margin-block-end: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+
+/* ---------- Groups ---------- */
+
+.groups {
+  display: grid;
+  gap: var(--sp-5);
+  margin: 0;
+}
+
+.group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+/* Teal line growing along the top on hover */
+.group::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 3px;
+  background: var(--teal);
+  transform: scaleX(0.15);
+  transform-origin: var(--start);
+  transition: transform 0.6s var(--ease);
+}
+
+.group:hover {
+  border-color: color-mix(in srgb, var(--teal) 45%, transparent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.group:hover::before {
+  transform: scaleX(1);
+}
+
+.number {
+  color: var(--orange);
+  font-family: var(--font-latin);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.groupTitle {
+  font-size: var(--fs-xl);
+}
+
+.points {
+  display: grid;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.points li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+
+.points svg {
+  flex: none;
+  margin-block-start: 0.2em;
+  color: var(--link);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+}
+
+.chips li {
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  background: var(--surface-strong);
+  color: var(--cream);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  animation: chip-in 0.5s var(--ease) both;
+  animation-delay: calc(0.4s + var(--i) * 70ms);
+  transition: transform var(--dur) var(--ease);
+}
+
+.chips li:hover {
+  transform: translateY(-2px);
+}
+
+/* ---------- Lead pipeline (development) ---------- */
+
+.pipeline {
+  display: grid;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--navy-2);
+  font-weight: var(--fw-medium);
+
+  /* One highlight walks through the eight stages, over and over */
+  animation: stage-glow 9.6s var(--ease) infinite;
+  animation-delay: calc(var(--i) * 1.2s);
+}
+
+.stageDot {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--orange);
+  font-family: var(--font-latin);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+}
+
+.stage[data-outcome='won'] {
+  border-color: var(--teal-light);
+}
+
+.stage[data-outcome='won'] .stageDot {
+  background: var(--teal-light);
+  color: var(--navy);
+}
+
+.stage[data-outcome='lost'] {
+  border-style: dashed;
+  color: var(--text-muted);
+}
+
+/* ---------- Related ---------- */
+
+.relatedTitle {
+  margin-block-end: var(--sp-6);
+  font-size: var(--fs-2xl);
+}
+
+.related {
+  display: grid;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.relatedLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  transition:
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.relatedLink svg {
+  flex: none;
+  color: var(--link);
+  transition: transform var(--dur) var(--ease);
+}
+
+.relatedLink:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.relatedLink:hover svg {
+  transform: translateX(calc(6px * var(--dir))) scaleX(var(--dir));
+}
+
+@media (width >= 48em) {
+  .groups,
+  .related {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pipeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64em) {
+  .groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes stage-glow {
+  0%,
+  14%,
+  100% {
+    box-shadow: none;
+    transform: none;
+  }
+
+  5% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--teal-light) 22%, transparent);
+    transform: translateY(-3px);
+  }
+}

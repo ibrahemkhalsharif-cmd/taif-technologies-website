@@ -34,7 +34,18 @@ const TOOL_ICONS: LucideIcon[] = [FileSpreadsheet, FileText, MessageCircle, Calc
 const SEGMENT_ICONS: LucideIcon[] = [HardHat, Wrench, Construction, Building, Building2, ChartLine];
 
 // Where each item of the hero audience row leads on the NEX ERP page (same order as nex.audienceShort)
-const AUDIENCE_TARGETS = ['#operations', '#sectors', '#sector-development', '#sector-contracting'];
+const AUDIENCE_TARGETS = [
+  '/nex-erp#operations',
+  '/nex-erp/electromechanical',
+  '/nex-erp/development',
+  '/nex-erp/contracting',
+];
+
+// Sector chips with a full sector page; the rest open their card on the NEX ERP page
+const SECTOR_PAGES: Record<string, string> = {
+  contracting: '/nex-erp/contracting',
+  development: '/nex-erp/development',
+};
 
 /** Home: NEX ERP first (owner's direction, Oct 2026); Taif's other services follow as secondary. */
 export function Home() {
@@ -87,9 +98,7 @@ export function Home() {
                 {nex.audienceShort.map((label, i) => (
                   // data-service only borrows the four accent colours used across the site
                   <li key={label} data-service={SERVICE_IDS[i]}>
-                    <Link to={`${path('/nex-erp')}${AUDIENCE_TARGETS[i] ?? '#sectors'}`}>
-                      {label}
-                    </Link>
+                    <Link to={path(AUDIENCE_TARGETS[i] ?? '/nex-erp#sectors')}>{label}</Link>
                   </li>
                 ))}
               </ul>
@@ -197,7 +206,10 @@ export function Home() {
           <ul role="list" className={`stagger ${styles.chips}`}>
             {nex.audience.sectors.map((sector) => (
               <li key={sector.name}>
-                <Link to={`${path('/nex-erp')}#sector-${sector.id}`} className={styles.chip}>
+                <Link
+                  to={path(SECTOR_PAGES[sector.id] ?? `/nex-erp#sector-${sector.id}`)}
+                  className={styles.chip}
+                >
                   {sector.name}
                   <span className={styles.chipTag} data-kind={sector.kind}>
                     {sector.kind === 'tested' ? nex.audience.tested : nex.audience.setup}

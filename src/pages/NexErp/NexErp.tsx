@@ -1,4 +1,5 @@
-import { CircleAlert, CircleCheck, ParkingSquare } from 'lucide-react';
+import { ArrowRight, CircleAlert, CircleCheck, ParkingSquare } from 'lucide-react';
+import { Link } from 'react-router';
 import { useLocation } from 'react-router';
 import { useLanguage } from '../../i18n/context';
 import { Seo } from '../../components/Seo/Seo';
@@ -9,6 +10,15 @@ import { CtaBand } from '../../components/CtaBand/CtaBand';
 import { OccupancyBoard } from '../../components/nex/Previews';
 import { ModulesGrid } from '../../components/nex/ModulesGrid';
 import styles from './NexErp.module.css';
+
+// Sector cards that have a full sector page
+const SECTOR_PAGE: Record<string, string> = {
+  elevators: '/nex-erp/electromechanical',
+  hvac: '/nex-erp/electromechanical',
+  solar: '/nex-erp/electromechanical',
+  contracting: '/nex-erp/contracting',
+  development: '/nex-erp/development',
+};
 
 /** Document numbers and line codes stay left-to-right inside Arabic text. */
 function Codes({ text }: { text: string }) {
@@ -174,6 +184,12 @@ export function NexErp() {
                   </li>
                 ))}
               </ul>
+              {SECTOR_PAGE[sector.id] && (
+                <Link to={path(SECTOR_PAGE[sector.id]!)} className={styles.detailsLink}>
+                  {t.sectors.details}
+                  <ArrowRight className="icon-dir" size={18} aria-hidden="true" />
+                </Link>
+              )}
             </li>
           ))}
         </ul>
