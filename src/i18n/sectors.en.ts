@@ -268,7 +268,7 @@ const sectorsEn: Sectors = {
         {
           title: 'Quotation & contract',
           points: [
-            'A supply-and-installation quotation with milestone payments, such as 30 / 40 / 30, and revenue recognised over time.',
+            'A supply-and-installation quotation with milestone payments, such as 30% / 40% / 30%, and revenue recognised over time.',
             'The general manager approves the quotation.',
             'Activating the contract creates the project, the sales order and the jobs for each phase automatically.',
           ],
@@ -618,7 +618,7 @@ const sectorsEn: Sectors = {
   // The company's two site survey forms (HVAC page); section titles only
   surveys: {
     title: 'The site survey forms',
-    lead: 'Two ready forms the technician fills in during the visit, then signs with the customer.',
+    lead: 'Two ready forms the technician or engineer fills in during the visit, then signs with the customer.',
     forms: [
       {
         tab: 'Split AC',
