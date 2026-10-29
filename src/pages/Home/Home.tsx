@@ -2,9 +2,11 @@ import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import {
   ArrowUpRight,
+  Building,
   Building2,
   Calculator,
   ChartLine,
+  Construction,
   CircleCheck,
   FileSpreadsheet,
   FileText,
@@ -29,7 +31,10 @@ import styles from './Home.module.css';
 const order = (i: number) => ({ '--i': i }) as CSSProperties;
 
 const TOOL_ICONS: LucideIcon[] = [FileSpreadsheet, FileText, MessageCircle, Calculator];
-const SEGMENT_ICONS: LucideIcon[] = [HardHat, Wrench, Building2, ChartLine];
+const SEGMENT_ICONS: LucideIcon[] = [HardHat, Wrench, Construction, Building, Building2, ChartLine];
+
+// Where each item of the hero audience row leads on the NEX ERP page (same order as nex.audienceShort)
+const AUDIENCE_TARGETS = ['#operations', '#sectors', '#sector-development', '#sector-contracting'];
 
 /** Home: NEX ERP first (owner's direction, Oct 2026); Taif's other services follow as secondary. */
 export function Home() {
@@ -82,7 +87,9 @@ export function Home() {
                 {nex.audienceShort.map((label, i) => (
                   // data-service only borrows the four accent colours used across the site
                   <li key={label} data-service={SERVICE_IDS[i]}>
-                    <Link to={`${path('/')}#audience`}>{label}</Link>
+                    <Link to={`${path('/nex-erp')}${AUDIENCE_TARGETS[i] ?? '#sectors'}`}>
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -167,7 +174,11 @@ export function Home() {
           {nex.audience.segments.map((segment, i) => {
             const Icon = SEGMENT_ICONS[i]!;
             return (
-              <li key={segment.title} className={styles.segment} data-service={SERVICE_IDS[i]}>
+              <li
+                key={segment.title}
+                className={styles.segment}
+                data-service={SERVICE_IDS[i % SERVICE_IDS.length]}
+              >
                 <span className={styles.segmentIcon}>
                   <Icon size={24} aria-hidden="true" />
                 </span>
@@ -186,7 +197,7 @@ export function Home() {
           <ul role="list" className={`stagger ${styles.chips}`}>
             {nex.audience.sectors.map((sector) => (
               <li key={sector.name}>
-                <Link to={`${path('/nex-erp')}#sectors`} className={styles.chip}>
+                <Link to={`${path('/nex-erp')}#sector-${sector.id}`} className={styles.chip}>
                   {sector.name}
                   <span className={styles.chipTag} data-kind={sector.kind}>
                     {sector.kind === 'tested' ? nex.audience.tested : nex.audience.setup}

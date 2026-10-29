@@ -15,11 +15,12 @@ const nexEn = {
     audienceLabel: 'Built for',
   },
 
+  // Owner's list for the hero (review, Oct 2026)
   audienceShort: [
-    'Systems contractors',
-    'Maintenance & facility management',
-    'Property owners',
-    'Management & finance',
+    'Maintenance & operations companies',
+    'Electromechanical systems companies',
+    'Real estate development companies',
+    'Contracting companies',
   ],
 
   problem: {
@@ -184,7 +185,7 @@ const nexEn = {
 
   audience: {
     eyebrow: 'Who it’s for',
-    title: 'Built for companies that install, maintain and rent.',
+    title: 'Built for companies that install, maintain, build and develop.',
     segments: [
       {
         title: 'Electromechanical systems contractors',
@@ -193,6 +194,14 @@ const nexEn = {
       {
         title: 'Maintenance & facility management companies',
         body: 'Annual maintenance contracts, field technician teams and service tickets.',
+      },
+      {
+        title: 'Contracting companies',
+        body: 'Building, road, finishing and infrastructure projects run as project contracts, with milestones, subcontractors and profit per project.',
+      },
+      {
+        title: 'Real estate development companies',
+        body: 'Developing buildings and then running them: projects, leads and leasing in one system.',
       },
       {
         title: 'Property owners and managers',
@@ -209,10 +218,12 @@ const nexEn = {
     tested: 'Tested example',
     setup: 'Setup example',
     sectors: [
-      { name: 'Elevators & escalators', kind: 'tested' },
-      { name: 'HVAC & VRF', kind: 'tested' },
-      { name: 'Generators', kind: 'setup' },
-      { name: 'Solar energy', kind: 'setup' },
+      { id: 'elevators', name: 'Elevators & escalators', kind: 'tested' },
+      { id: 'hvac', name: 'HVAC & VRF', kind: 'tested' },
+      { id: 'solar', name: 'Solar energy', kind: 'setup' },
+      { id: 'generators', name: 'Generators', kind: 'setup' },
+      { id: 'contracting', name: 'Contracting', kind: 'setup' },
+      { id: 'development', name: 'Real estate development', kind: 'setup' },
     ],
   },
 
@@ -427,9 +438,10 @@ const nexEn = {
     sectors: {
       eyebrow: 'Sectors',
       title: 'Examples of how NEX ERP is set up.',
-      lead: 'There is no separate “elevators” or “solar” module: each sector is configured with the same tools. Elevators and HVAC are tested examples; generators and solar are proposed setups.',
+      lead: 'There is no separate “elevators” or “solar” module: each sector is configured with the same tools. Elevators and HVAC are tested examples; the others are proposed setups.',
       items: [
         {
+          id: 'elevators',
           name: 'Elevators & escalators',
           kind: 'tested',
           lines: 'ELV-INST · ELV-MNT',
@@ -441,6 +453,7 @@ const nexEn = {
           ],
         },
         {
+          id: 'hvac',
           name: 'HVAC & VRF',
           kind: 'tested',
           lines: 'VRF-INST · VRF-MNT',
@@ -451,6 +464,7 @@ const nexEn = {
           ],
         },
         {
+          id: 'generators',
           name: 'Generators',
           kind: 'setup',
           lines: '',
@@ -461,6 +475,7 @@ const nexEn = {
           ],
         },
         {
+          id: 'solar',
           name: 'Solar energy',
           kind: 'setup',
           lines: '',
@@ -468,6 +483,30 @@ const nexEn = {
             'Residential and commercial lines, plus maintenance and cleaning.',
             'Survey and design, installation, connection, and approval by the utility.',
             'Panel and inverter warranties with expiry reminders, tracked by serial number.',
+          ],
+        },
+        {
+          id: 'contracting',
+          name: 'Contracting',
+          kind: 'setup',
+          lines: '',
+          points: [
+            'An operation line for each type of work, with its own stages, services and document numbering.',
+            'Project contracts with milestones, refundable deposits, and approved amendments for added work.',
+            'Purchase requests and tenders, and subcontractor purchase orders linked to the contract.',
+            'Every material and purchase invoice charged to the project, with its P&L from the general ledger.',
+          ],
+        },
+        {
+          id: 'development',
+          name: 'Real estate development',
+          kind: 'setup',
+          lines: '',
+          points: [
+            'The same project tools as contracting, with profit per project.',
+            'Leads and opportunities in the CRM, with appointments and follow-up.',
+            'Completed buildings move to leasing: units, the occupancy board and leases.',
+            'Building systems recorded as fixed assets, with their maintenance and depreciation.',
           ],
         },
       ],

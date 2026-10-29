@@ -641,9 +641,13 @@
 }
 
 @media (width >= 64em) {
-  .problemGrid,
-  .segments {
+  .problemGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* Six customer groups: two rows of three */
+  .segments {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .why {

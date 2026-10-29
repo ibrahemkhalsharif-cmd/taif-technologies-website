@@ -168,6 +168,29 @@
   transform: translateY(-4px);
 }
 
+/* The sector a link pointed at: a ring pulses around it and its border lights up */
+.sector[data-arrived] {
+  border-color: var(--teal-light);
+  border-style: solid;
+  animation: sector-arrive 1.6s var(--ease) 0.5s both;
+}
+
+@keyframes sector-arrive {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal-light) 70%, transparent);
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    box-shadow: 0 0 0 22px transparent;
+    transform: scale(1);
+  }
+}
+
 .sectorHead {
   display: flex;
   flex-wrap: wrap;
@@ -261,6 +284,10 @@
 }
 
 @media (width >= 64em) {
+  .sectors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .split {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     gap: var(--sp-16);

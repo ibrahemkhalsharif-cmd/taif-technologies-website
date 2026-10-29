@@ -1,4 +1,5 @@
 import { CircleAlert, CircleCheck, ParkingSquare } from 'lucide-react';
+import { useLocation } from 'react-router';
 import { useLanguage } from '../../i18n/context';
 import { Seo } from '../../components/Seo/Seo';
 import { PageHero } from '../../components/PageHero/PageHero';
@@ -30,6 +31,7 @@ function Codes({ text }: { text: string }) {
 /** NEX ERP in detail: operation lines, each stage, real estate, sectors, modules and the platform. Source: brief §1–6. */
 export function NexErp() {
   const { t, path } = useLanguage();
+  const { hash, key } = useLocation();
   const nex = t.nex;
   const page = nex.page;
 
@@ -145,7 +147,14 @@ export function NexErp() {
         </div>
         <ul role="list" className={`stagger ${styles.sectors}`}>
           {page.sectors.items.map((sector) => (
-            <li key={sector.name} className={styles.sector} data-kind={sector.kind}>
+            <li
+              // Re-keyed on each visit so the arrival highlight replays
+              key={hash === `#sector-${sector.id}` ? `${sector.id}-${key}` : sector.id}
+              id={`sector-${sector.id}`}
+              className={styles.sector}
+              data-kind={sector.kind}
+              data-arrived={hash === `#sector-${sector.id}` ? '' : undefined}
+            >
               <div className={styles.sectorHead}>
                 <h3 className={styles.sectorName}>{sector.name}</h3>
                 <span className={styles.tag} data-kind={sector.kind}>
