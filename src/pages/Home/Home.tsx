@@ -39,10 +39,16 @@ const AUDIENCE_TARGETS = [
   '/nex-erp/electromechanical',
   '/nex-erp/development',
   '/nex-erp/contracting',
+  '/nex-erp/solar',
 ];
+
+// Dot colour for each item of the hero audience row; solar reuses the orange (the sun)
+const AUDIENCE_ACCENTS = [...SERVICE_IDS, 'consulting'];
 
 // Sector chips with a full sector page; the rest open their card on the NEX ERP page
 const SECTOR_PAGES: Record<string, string> = {
+  hvac: '/nex-erp/hvac',
+  solar: '/nex-erp/solar',
   contracting: '/nex-erp/contracting',
   development: '/nex-erp/development',
 };
@@ -96,8 +102,8 @@ export function Home() {
             <nav aria-label={nex.hero.audienceLabel} className={styles.legend} style={order(4)}>
               <ul role="list">
                 {nex.audienceShort.map((label, i) => (
-                  // data-service only borrows the four accent colours used across the site
-                  <li key={label} data-service={SERVICE_IDS[i]}>
+                  // data-service only borrows the accent colours used across the site
+                  <li key={label} data-service={AUDIENCE_ACCENTS[i]}>
                     <Link to={path(AUDIENCE_TARGETS[i] ?? '/nex-erp#sectors')}>{label}</Link>
                   </li>
                 ))}

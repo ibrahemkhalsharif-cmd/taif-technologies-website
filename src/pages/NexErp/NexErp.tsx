@@ -14,8 +14,8 @@ import styles from './NexErp.module.css';
 // Sector cards that have a full sector page
 const SECTOR_PAGE: Record<string, string> = {
   elevators: '/nex-erp/electromechanical',
-  hvac: '/nex-erp/electromechanical',
-  solar: '/nex-erp/electromechanical',
+  hvac: '/nex-erp/hvac',
+  solar: '/nex-erp/solar',
   contracting: '/nex-erp/contracting',
   development: '/nex-erp/development',
 };

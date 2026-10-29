@@ -21,6 +21,7 @@ const nexEn = {
     'Electromechanical systems companies',
     'Real estate development companies',
     'Contracting companies',
+    'Solar energy companies',
   ],
 
   problem: {
