@@ -18,7 +18,8 @@ const nexEn = {
   // Owner's list for the hero (review, Oct 2026)
   audienceShort: [
     'Maintenance & operations companies',
-    'Electromechanical systems companies',
+    'Elevator companies',
+    'HVAC companies',
     'Real estate development companies',
     'Contracting companies',
     'Solar energy companies',

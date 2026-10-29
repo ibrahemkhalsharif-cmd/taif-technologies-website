@@ -14,7 +14,7 @@ import styles from './SectorPage.module.css';
 
 const order = (i: number) => ({ '--i': i }) as CSSProperties;
 
-/** One NEX ERP sector (electromechanical, contracting, real estate development, HVAC, solar), from the company's notes. */
+/** One NEX ERP sector (electromechanical, contracting, real estate development, elevators, HVAC, solar), from the company's notes. */
 export function SectorPage() {
   const { t, path } = useLanguage();
   const { sector } = useParams();

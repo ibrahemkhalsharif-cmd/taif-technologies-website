@@ -36,14 +36,16 @@ const SEGMENT_ICONS: LucideIcon[] = [HardHat, Wrench, Construction, Building, Bu
 // Where each item of the hero audience row leads on the NEX ERP page (same order as nex.audienceShort)
 const AUDIENCE_TARGETS = [
   '/nex-erp#operations',
-  '/nex-erp/electromechanical',
+  '/nex-erp/elevators',
+  '/nex-erp/hvac',
   '/nex-erp/development',
   '/nex-erp/contracting',
   '/nex-erp/solar',
 ];
 
-// Dot colour for each item of the hero audience row; solar reuses the orange (the sun)
-const AUDIENCE_ACCENTS = [...SERVICE_IDS, 'consulting'];
+// Dot colour for each item of the hero audience row: the four accents, then teal-light
+// and orange again (solar keeps the orange, the sun)
+const AUDIENCE_ACCENTS = [...SERVICE_IDS, 'software', 'consulting'];
 
 // Sector chips with a full sector page; the rest open their card on the NEX ERP page
 const SECTOR_PAGES: Record<string, string> = {

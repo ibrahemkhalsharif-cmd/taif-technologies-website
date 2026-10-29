@@ -1,7 +1,8 @@
 // Sector pages (English). Source: the company's notes on each sector (review, 29 Oct 2026),
 // saved in docs/nex-erp-sector-notes.md. A natural rewrite, not a word-for-word translation.
 
-export type SectorId = 'electromechanical' | 'contracting' | 'development' | 'hvac' | 'solar';
+export type SectorId =
+  'electromechanical' | 'contracting' | 'development' | 'elevators' | 'hvac' | 'solar';
 
 export interface SectorGroup {
   title: string;
@@ -238,6 +239,102 @@ const sectorsEn: Sectors = {
       ],
     },
 
+    // Elevators: the company's notes (the electromechanical page) plus the elevator example in docs/nex-erp-brief.md
+    elevators: {
+      name: 'Elevator companies',
+      title: 'From the site survey to routine maintenance.',
+      lead: 'NEX ERP follows elevator and escalator projects step by step: supply and stock, site surveys and pricing, ordering and importing, installation in phases, permits and certificates, then maintenance.',
+      groups: [
+        {
+          title: 'Supply & inventory',
+          points: [
+            'Supply chains and device types.',
+            'Inventory and warehouse control.',
+            'The types and names of the parts each device needs.',
+          ],
+          chips: [],
+        },
+        {
+          title: 'Sales & site survey',
+          points: [
+            'The project’s location in the city, and details of the owner and the supervising engineer.',
+            'Project details: number of floors and apartments, and floor heights.',
+            'For elevators: overhead and pit, and the space available on the roof.',
+            'A site survey visit with a checklist.',
+            'Quotation requests from the sales rep, prepared later, then follow-up by customer status after the offer.',
+          ],
+          chips: [],
+        },
+        {
+          title: 'Quotation & contract',
+          points: [
+            'A supply-and-installation quotation with milestone payments, such as 30 / 40 / 30, and revenue recognised over time.',
+            'The general manager approves the quotation.',
+            'Activating the contract creates the project, the sales order and the jobs for each phase automatically.',
+          ],
+          chips: ['Lead', 'Site survey', 'Quotation', 'Manager approval', 'Contract', 'Activation'],
+          flow: true,
+        },
+        {
+          title: 'Ordering & arrival',
+          points: [
+            'Order the elevator once the agreement is signed.',
+            'A purchase order to the manufacturer in its currency, such as euros, then follow the international shipment.',
+            'Track each stage of its arrival, then store it when it arrives.',
+            'Receive it by serial number, with freight and customs added to the elevator’s cost.',
+            'The expected time for each stage.',
+          ],
+          chips: [],
+        },
+        {
+          title: 'Installation in phases',
+          points: [
+            'Civil works required from the owner, or from the contractor when the installing company also does them.',
+            'Installation stages from rails and doors through to commissioning, with the company’s own commissioning tests.',
+            'Parts issued from stock to the contract’s project, so their cost shows in its profit.',
+            'The elevator safety checklist.',
+            'Finishing works the owner needs to do around the doors after installation.',
+          ],
+          chips: [
+            'Civil works',
+            'Rails',
+            'Doors',
+            'Commissioning',
+            'Commissioning tests',
+            'Finishing',
+          ],
+          flow: true,
+        },
+        {
+          title: 'Permits, certificates & handover',
+          points: [
+            'Request the operating permit from the authorities: standards and metrology, and civil defence.',
+            'Insure the elevator.',
+            'Certificates with their expiry dates, and an automatic reminder before renewal.',
+            'Hand the elevator over to the maintenance department after commissioning.',
+          ],
+          chips: ['Civil defence', 'Periodic inspection', 'Insurance', 'Guarantee'],
+        },
+        {
+          title: 'Maintenance',
+          points: [
+            'Follow routine maintenance and monthly visits.',
+            'Maintenance contracts.',
+            'Fault tickets by priority, such as a stuck elevator or a door that won’t close.',
+            'Spare parts covered by the maintenance contract, or billed to the customer.',
+            'Quotations for the parts needed.',
+          ],
+          chips: [],
+        },
+      ],
+      relatedLinks: [
+        { label: 'HVAC companies', to: '/nex-erp/hvac' },
+        { label: 'Solar energy companies', to: '/nex-erp/solar' },
+        { label: 'Elevators, HVAC and solar', to: '/nex-erp/electromechanical' },
+        { label: 'Maintenance contracts and tickets', to: '/nex-erp#operations' },
+      ],
+    },
+
     // HVAC and solar: the company's page outlines (review, 29 Oct 2026)
     hvac: {
       name: 'HVAC companies',
@@ -259,6 +356,8 @@ const sectorsEn: Sectors = {
           title: 'Site surveys & technical calculations',
           points: [
             'Ready survey forms for split and central air conditioning, filled in on a phone on site.',
+            'Project details: its location in the city, the owner, the supervising engineer, and the number of floors and apartments.',
+            'Apartment area and ceiling height, and the dimensions of the rooms and living room.',
             'Upload photos, drawings and measurements straight from the site.',
             'Calculate the heat load of each room and estimate the right capacity.',
             'Suggest system types (Split / Ducted / VRF), with the reasons shown to the customer.',
@@ -282,6 +381,8 @@ const sectorsEn: Sectors = {
             'Schedule technicians and teams, and assign tasks.',
             'Track progress and delayed projects.',
             'Daily site reports with photos.',
+            'Groundwork requirements for piping and electrical, and excavation.',
+            'Gas charging and a test run, with a checklist and the customer’s sign-off.',
           ],
           chips: [
             'Rough-in',
@@ -296,8 +397,10 @@ const sectorsEn: Sectors = {
         {
           title: 'Warehouses & purchasing',
           points: [
+            'Supply chains and device types, and the parts each device needs.',
             'Stock of units, copper parts, refrigerant gas and consumables.',
-            'Track device serial numbers, which matters for warranties.',
+            'Buy imported units in the supplier’s currency, such as dollars.',
+            'Track the serial number of every indoor and outdoor unit, which matters for warranties.',
             'Low-stock alerts and automatic purchase requests.',
             'Compare supplier prices and manage payables.',
             'Issue materials to the project and calculate their actual cost.',
@@ -308,6 +411,9 @@ const sectorsEn: Sectors = {
           title: 'Maintenance & service contracts',
           points: [
             'Periodic maintenance contracts with automatic visit reminders.',
+            'Preventive visits for filter cleaning and pressure checks.',
+            'Periodic billing for all maintenance contracts in one run.',
+            'Parts the contract doesn’t cover are billed to the customer.',
             'Fault requests, assigned to technicians.',
             'A maintenance history for each unit: installation date, faults and replaced parts.',
             'Warranty management: what it covers and what has expired.',
